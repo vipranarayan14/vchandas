@@ -1,4 +1,6 @@
-const metres = [
+/* eslint-disable no-magic-numbers */
+
+export const chandasList = [
 
   {
     caesura: [],
