@@ -1,63 +1,48 @@
-/* eslint-disable sort-keys */
-
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-
 const path = require('path');
 
-const entry = './prod/app.js';
-const filename = 'scripts.js';
+const libraryName = 'vChandas';
+const filename = 'vchandas';
 
-const config = {
-  entry,
-  output: {
-    filename,
-    path: path.resolve(`${__dirname}/dist`)
-  },
+const baseConfig = {
+  entry: './src/index.js',
   module: {
-    loaders: [
-
-      {
-        exclude: /node_modules/,
-        test: /\.js$/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['babel-preset-env']
-          }
-        }
-      },
-
-      {
-        test: /\.(css|less)$/,
-        loader: ExtractTextPlugin.extract([
-          'css-loader?sourceMap&minimize',
-          'less-loader?sourceMap'
-        ])
-      },
-
-      {
-        test: /\.(woff|woff2|ttf|eot|svg|jpeg|png|gif)/,
-        loaders: 'url-loader',
+    loaders: [{
+      exclude: /node_modules/,
+      test: /\.js$/,
+      use: {
+        loader: 'babel-loader',
         options: {
-          limit: 1,
-          name: '[name].[ext]',
-          useRelativePath: true
+          presets: ['babel-preset-env']
         }
       }
-
-    ]
-  },
-  plugins: [
-    new ExtractTextPlugin('styles.css'),
-    new UglifyJsPlugin(),
-    new CopyWebpackPlugin([{
-      from: 'prod/assets/icons/**/*',
-      flatten: true,
-      to: 'assets/icons/'
-    }])
-  ]
+    }]
+  }
 };
 
-module.exports = config;
+const browserConfig = Object.assign({}, baseConfig, {
+
+  output: {
+    filename: `${filename}.js`,
+    library: libraryName,
+    libraryExport: libraryName,
+    libraryTarget: 'window',
+    path: path.join(__dirname, 'dist')
+  }
+
+});
+
+const npmConfig = Object.assign({}, baseConfig, {
+
+  output: {
+    filename: `${filename}.npm.js`,
+    library: libraryName,
+    libraryTarget: 'umd',
+    path: path.join(__dirname, 'dist')
+  }
+
+});
+
+module.exports = [
+  browserConfig,
+  npmConfig
+];
