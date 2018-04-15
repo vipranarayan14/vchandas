@@ -1,0 +1,41 @@
+{
+  "name": "vchandas",
+  "version": "3.3.1",
+  "description": "An utility for samskrita prosody.",
+  "main": "dist/vchandas.npm.js",
+  "files": [
+    "bin",
+    "dist/vchandas.npm.js"
+  ],
+  "bin": {
+    "translit": "bin/vchandas.js"
+  },
+  "scripts": {
+    "build": "rimraf dist && webpack",
+    "test": "mocha",
+    "eslint": "eslint ./**/*.js",
+    "precommit": "npm run eslint",
+    "preversion": "npm run test",
+    "version": "npm run build && git add -A dist",
+    "postversion": "git push && git push --tags"
+  },
+  "author": "Prasanna Venkatesh T S <vipranarayan14@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "eslint": "^4.15.0",
+    "husky": "^0.14.3",
+    "mocha": "^4.1.0",
+    "rimraf": "^2.6.2",
+    "webpack": "^3.10.0"
+  },
+  "dependencies": {
+    "vtokenize": "^2.1.1",
+    "vtranslit-schemes": "^2.0.1"
+  },
+  "repository": "https://github.com/vipranarayan14/vchandas.git"
+}
