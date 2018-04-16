@@ -1,12 +1,13 @@
-const makeSchemeLeaf = (akshara, aksharaIndex, alternateIndex, schemeBranch, schemeSubset, tokenLengths) => {
+import { getMatra } from './matras';
+
+const makeSchemeLeaf = (akshara, aksharaIndex, schemeBranch, schemeSubset, tokenLengths) => {
 
   if (akshara) {
 
     schemeBranch[akshara] = {
 
-      aksharaIndex: `${schemeSubset}#${aksharaIndex}`,
-      alternateIndex,
-      char: akshara,
+      akshara,
+      matra: getMatra(schemeSubset, aksharaIndex),
       type: schemeSubset
 
     };
@@ -52,7 +53,11 @@ export const makeSchemeTree = fromScheme => {
     makeSchemeBranch(fromScheme, 'consonants', tokenLengths),
     makeSchemeBranch(fromScheme, 'vowels', tokenLengths),
     makeSchemeBranch(fromScheme, 'vowelMarks', tokenLengths),
-    makeSchemeBranch(fromScheme, 'symbols', tokenLengths)
+    makeSchemeBranch({
+      'data': {
+        'ayogavaha': ['\u0902', '\u0903']
+      }
+    }, 'ayogavaha', tokenLengths)
 
   );
 
