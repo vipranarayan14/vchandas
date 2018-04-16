@@ -9,6 +9,7 @@ export const chandasList = [
       'shrIshaH |' +
       'pAyAt ||'
     ],
+    ganas: 'ga',
     name: 'shrIH',
     type: 'uktA'
   },
@@ -19,6 +20,7 @@ export const chandasList = [
       'shrImAn viShnuH |' +
       'nityaM dhyeyaH ||'
     ],
+    ganas: 'ga,ga',
     name: 'strI',
     type: 'atyuktA'
   },
@@ -29,6 +31,7 @@ export const chandasList = [
       'nArINAM kalyANI |' +
       'mAM pAyAtsA vANI ||'
     ],
+    ganas: 'ma',
     name: 'nArI',
     type: 'madhyA'
   },
@@ -39,6 +42,7 @@ export const chandasList = [
       'sA mRRigIlOchanI |' +
       'rAdhikA shrIpatEH ||'
     ],
+    ganas: 'ra',
     name: 'mRRigI',
     type: 'madhyA'
   },
@@ -49,6 +53,7 @@ export const chandasList = [
       'bhAsvatkanyA saikA dhanyA |' +
       'yasyAH kUlE kRRiShNO.akhElat ||'
     ],
+    ganas: 'ma|ga',
     name: 'kanyA',
     type: 'pratiShTA'
   },
@@ -59,6 +64,7 @@ export const chandasList = [
       'bhAsvatkanyA saikA dhanyA |' +
       'yasyAH kUlE kRRiShNO.akhElat ||'
     ],
+    ganas: 'ma|ga,ga',
     name: 'pa~NktiH',
     type: 'supratiShTA'
   },
@@ -71,6 +77,7 @@ export const chandasList = [
       'nashyanti dadarsha vRRindAni kapIndraH |' +
       'hArINyabalAnAM hArINyabalAnAm ||'
     ],
+    ganas: 'ma|ga',
     name: 'tanumadhyA',
     type: 'gAyatrI'
   },
@@ -81,6 +88,7 @@ export const chandasList = [
       'shashivadanAnAM vrajataruNInAm |' +
       'dadhighaTabhedaM madhuripuraichchhat ||'
     ],
+    ganas: 'na|ya',
     name: 'shashivadanA',
     type: 'gAyatrI'
   },
@@ -91,6 +99,7 @@ export const chandasList = [
       'varShAkAlE kAlE mEghAchchhannAkAshE |' +
       'vidyullEkhA bhAntyAH sarvairAlOkhyantE ||'
     ],
+    ganas: 'ma|ma',
     name: 'vidyullEkhA',
     type: 'gAyatrI'
   },
@@ -101,6 +110,7 @@ export const chandasList = [
       'sAstE vasumatI yAstE vasumatI |' +
       'puNyAkaravatI puNyAkarabhavA ||'
     ],
+    ganas: 'ta|sa',
     name: 'vasumatI',
     type: 'gAyatrI'
   },
@@ -111,6 +121,7 @@ export const chandasList = [
       'ra~NgE bAhuvirugNAt dantIndrAnmadalEkhA |' +
       'lagnAbhUtmurashatrau kastUrIrasacharchA ||'
     ],
+    ganas: 'ma|sa|ga',
     name: 'madalEkhA',
     type: 'uShNik'
   },
@@ -121,6 +132,7 @@ export const chandasList = [
       'murAritanuvallI kumAralalitA sA |' +
       'vrajaiNanayanAnAM tatAna mudamuchchaiH ||'
     ],
+    ganas: 'ja|sa|ga',
     name: 'kumAralalitA',
     type: 'uShNik'
   },
@@ -131,6 +143,7 @@ export const chandasList = [
       'dhavalA haMsamAlA sukhapUrvaM vishAlA |' +
       'vimalAmbhastaDAkE bhayahInA nidadrau ||'
     ],
+    ganas: 'sa|ra|ga',
     name: 'haMsamAlA',
     type: 'uShNik'
   },
@@ -141,6 +154,7 @@ export const chandasList = [
       'yAmunasaikatadEshE gOpavadhUjalakElau |' +
       'kaMsaripOrgalIlA chitrapadA jagadavyAt ||'
     ],
+    ganas: 'bha|bha|ga,ga',
     name: 'chitrapadA',
     type: 'anuShTup'
   },
@@ -151,6 +165,7 @@ export const chandasList = [
       'vidyunmAlAlOlAn bhOgAn muktvA muktau yatnaM kuryAt |' +
       'dhyAnOtpannaM niHsAmAnyaM saukhyaM bhOktum yadyAkA~NkShEt ||'
     ],
+    ganas: 'ma|ma|ga,ga',
     name: 'vidyunmAlA',
     type: 'anuShTup'
   },
@@ -161,6 +176,7 @@ export const chandasList = [
       'mANavakakrIditakaM yaH kurutE vRRiddhavayAH |' +
       'hAsyamasau yAti janE bhikShuriva strIchapalaH ||'
     ],
+    ganas: 'bha|ta|la,ga',
     name: 'mANavakam',
     type: 'anuShTup'
   },
@@ -171,6 +187,7 @@ export const chandasList = [
       'abhyAgAmishashilakShmIma~njIrakvaNitatulyam |' +
       'tIrE rajati nadInAM ramyaM haMsarutamEtat ||'
     ],
+    ganas: 'ma|na|ga,ga',
     name: 'haMsarutam',
     type: 'anuShTup'
   },
@@ -181,6 +198,7 @@ export const chandasList = [
       'yasya kRRiShNapAdapadmamasti hRRittaDAgasadma |' +
       'dhIH samAnikA parENa nocitA.atra matsarENa ||'
     ],
+    ganas: 'ra|ja|ga,la',
     name: 'samAnikA',
     type: 'anuShTup'
   },
@@ -191,6 +209,7 @@ export const chandasList = [
       'punAtu bhaktirachyutA sadAchyutA~NghripadmayOH |' +
       'shrutismRRitipramANikA bhavAmburAshitArikA ||'
     ],
+    ganas: 'ja|ra|la,ga',
     name: 'pramANikA',
     type: 'anuShTup'
   },
@@ -201,6 +220,7 @@ export const chandasList = [
       'gaNDayOratishayakRRishaM yanmukham prakaTadarshanaM |' +
       'AyataM kalahanirataM tAM striyaM tyaja halamukhIm ||'
     ],
+    ganas: 'ra|na|sa',
     name: 'halamukhI',
     type: 'bRRihatI'
   },
@@ -211,6 +231,7 @@ export const chandasList = [
       'hradataTanikaTakShONI bhujagashashibhRRitA yAsIt |' +
       'muraripudalitE nAgE vrajajanasukhadA sAbhUt ||'
     ],
+    ganas: 'na|na|ma',
     name: 'bhujagashashibhRRitA',
     type: 'bRRihatI'
   },
@@ -221,6 +242,7 @@ export const chandasList = [
       'vishvaM tiShTati kukShikOtarE vaktrE yasya sarasvatI sadA |' +
       'asmadvaMshapitAmahO gururbrahmA shuddhavirAD punAtu naH ||'
     ],
+    ganas: 'ma|sa|ja|ga',
     name: 'shuddhavirAD',
     type: 'pa~Nkti'
   },
@@ -231,6 +253,7 @@ export const chandasList = [
       'mImAMsArasamamRRitaM pItvA shAstrOktiH paTuritarA bhAti |' +
       'EvaM saMsadi viduShAM jalpAmO jayapaNabandhanAt ||'
     ],
+    ganas: 'ma|na|ya|ga',
     name: 'paNavaH',
     type: 'pa~Nkti'
   },
@@ -241,6 +264,7 @@ export const chandasList = [
       'yA vanAntarANyupaiti rantuM yA bhuja~NgabhOgamuktacittA |' +
       'yA drutaM prayAti sannatAMsA tAM mayUrasAriNIM vijahyAt ||'
     ],
+    ganas: 'ra|ja|ra|ga',
     name: 'mayUrasAriNI',
     type: 'pa~Nkti'
   },
@@ -251,6 +275,7 @@ export const chandasList = [
       'pAdatalE padmOdaragaurE rAjati yasyA UrdhvarEkhA |' +
       'sA bhavati strIlakShaNayuktA rukmavatI saubhAgyavatI ca ||'
     ],
+    ganas: 'bha|ma|sa|ga',
     name: 'rukmavatI',
     type: 'pa~Nkti'
   },
@@ -261,6 +286,7 @@ export const chandasList = [
       'pItvA mattA madhu madhupAlI kAlindIyE taTavanaku~njE |' +
       'uddIvyantI vrajajanarAmAH prEmAviShTA madhujiti chakrE ||'
     ],
+    ganas: 'ma|bha|sa|ga',
     name: 'mattA',
     type: 'pa~Nkti'
   },
@@ -271,6 +297,7 @@ export const chandasList = [
       'taraNijAtaTE vihAriNI vrajavilAsinIvilAsataH |' +
       'muraripOstanuH punAtu vaH sukRRitashAlinAM manOramAH ||'
     ],
+    ganas: 'na|ra|ja|ga',
     name: 'manOramA',
     type: 'pa~Nkti'
   },
@@ -281,6 +308,7 @@ export const chandasList = [
       'EShA jagadEkamanOharA kanyA kanakOjjvaladIdhitiH |' +
       'lakShmIriva dAnavasUdanaM puNyairnaranAthamupasthitA ||'
     ],
+    ganas: 'ta|ja|ja|ga',
     name: 'upasthitA',
     type: 'pa~Nkti'
   },
