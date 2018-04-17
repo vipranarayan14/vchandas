@@ -1,56 +1,54 @@
-const ganasList = [
+const ganasList = {
 
-  {
-    name: 'Ma',
-    pattern: 'G,G,G'
-  },
-  {
-    name: 'Na',
-    pattern: 'L,L,L'
-  },
-  {
-    name: 'Bha',
-    pattern: 'G,L,L'
-  },
-  {
-    name: 'Ya',
-    pattern: 'L,G,G'
-  },
-  {
-    name: 'Ja',
-    pattern: 'L,G,L'
-  },
-  {
-    name: 'Ra',
-    pattern: 'G,L,G'
-  },
-  {
-    name: 'Sa',
-    pattern: 'L,L,G'
-  },
-  {
-    name: 'Ta',
-    pattern: 'G,G,L'
+  'ga,ga,ga': 'ma',
+  'ga,ga,la': 'ta',
+  'ga,la,ga': 'ra',
+  'ga,la,la': 'bha',
+  'la,ga,ga': 'ya',
+  'la,ga,la': 'ja',
+  'la,la,ga': 'sa',
+  'la,la,la': 'na'
+
+};
+
+const makeMatraGroups = matras => {
+
+  const chunk = 3;
+
+  const matraGroups = [];
+
+  for (let i = 0, len = matras.length; i < len; i += chunk) {
+
+    matraGroups.push(matras.slice(i, i + chunk).join(','));
+
   }
 
-];
+  return matraGroups;
+
+};
 
 export const getGanas = matras => {
 
   const ganas = [];
 
-  const matraGroups = [];
+  const matraGroups = makeMatraGroups(matras);
 
-  const matrasCopy = matras.slice(0);
+  matraGroups.forEach(matraGroup => {
 
-  while (matrasCopy.length) {
+    const gana = ganasList[matraGroup];
 
-    matraGroups.push(matrasCopy.splice(0, 3));
+    if (gana) {
 
-  }
+      ganas.push(gana);
 
-  ganasList.find(gana => gana.pattern === matraGroups); //TODO: handle reminder matras.
+    } else {
 
-  return ganas;
+      ganas.push(matraGroup);
+
+    }
+
+  });
+
+  return ganas.join('|');
 
 };
