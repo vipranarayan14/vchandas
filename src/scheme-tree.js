@@ -27,7 +27,6 @@ const makeSchemeBranch = (scheme, schemeSubset, tokenLengths) => {
     makeSchemeLeaf(
       akshara,
       aksharaIndex,
-      0,
       schemeBranch,
       schemeSubset,
       tokenLengths
