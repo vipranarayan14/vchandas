@@ -1,10 +1,7 @@
+import { devanagariScheme } from 'vtranslit-schemes';
 import { expect } from 'chai';
-
 import { makeSchemeTree } from '../../src/scheme-tree';
 import rewire from 'rewire';
-import { schemes } from 'vtranslit-schemes';
-
-const devanagariScheme = schemes.Deva;
 
 const { schemeTree } = makeSchemeTree(devanagariScheme);
 

@@ -1,14 +1,11 @@
+import { devanagariScheme } from 'vtranslit-schemes';
 import { expect } from 'chai';
-
 import { getGanas } from '../../src/ganas';
 import { getMatras } from '../../src/matras';
 import { getSliceDetails } from '../../src/slice-details';
 import { makeSchemeTree } from '../../src/scheme-tree';
-import { schemes } from 'vtranslit-schemes';
 import { testStrings } from './test-strings';
 import { vTokenize } from 'vtokenize';
-
-const devanagariScheme = schemes.Deva;
 
 const {
   schemeTree,
