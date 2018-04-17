@@ -1,3 +1,4 @@
+import { devanagariScheme } from 'vtranslit-schemes';
 import { getChandas } from './chandas';
 import { getGanas } from './ganas';
 import { getMatras } from './matras';
@@ -5,14 +6,11 @@ import { getSliceDetails } from './slice-details';
 import { getSyllables } from './syllables';
 import { makeSchemeTree } from './scheme-tree';
 import { prepareChandasList } from './init';
-import { schemes } from 'vtranslit-schemes';
 import { vTokenize } from 'vtokenize';
 
 export const vChandas = () => {
 
   const chandasList = prepareChandasList();
-
-  const devanagariScheme = schemes.Deva;
 
   const {
     schemeTree,
