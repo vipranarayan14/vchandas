@@ -22,7 +22,7 @@ const getTokens = inStr =>
     getSliceDetails(schemeTree)
   );
 
-describe.only('getMatras', () => {
+describe('getMatras', () => {
 
   testStrings.forEach(testString => {
 
