@@ -1,5 +1,3 @@
-import { getMatra } from './matras';
-
 const makeSchemeLeaf = (akshara, aksharaIndex, schemeBranch, schemeSubset, tokenLengths) => {
 
   if (akshara) {
@@ -7,7 +5,7 @@ const makeSchemeLeaf = (akshara, aksharaIndex, schemeBranch, schemeSubset, token
     schemeBranch[akshara] = {
 
       akshara,
-      matra: getMatra(schemeSubset, aksharaIndex),
+      aksharaIndex,
       type: schemeSubset
 
     };

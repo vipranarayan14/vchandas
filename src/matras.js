@@ -1,18 +1,36 @@
-export const getMatra = (type, aksharaIndex) => {
+const setMatra = token => {
 
-  let matra = { 'ayogavaha': 2, 'consonants': 1, 'deadConsonants': 0, }[type];
+  let matra = { 'ayogavaha': 2, 'consonants': 1, 'deadConsonants': 0, }[token.type];
 
   if (matra !== undefined) {
 
-    return matra;
+    return Object.assign({}, token, { matra });
 
   }
 
   const shortVowelIndexes = { LLi: 8, RRi: 6, a: 0, i: 2, u: 4 };
 
-  matra = (Object.values(shortVowelIndexes).includes(aksharaIndex)) ? 1 : 2;
+  matra = (Object.values(shortVowelIndexes).includes(token.aksharaIndex)) ? 1 : 2;
 
-  return matra;
+  return Object.assign({}, token, { matra });
+
+};
+
+const setMatras = tokens => {
+
+  const tokensWithMatras = [];
+
+  tokens.forEach(token => {
+
+    if (token.type !== 'unknown') {
+
+      tokensWithMatras.push(setMatra(token));
+
+    }
+
+  });
+
+  return tokensWithMatras;
 
 };
 
@@ -22,9 +40,11 @@ export const getMatras = tokens => {
 
   const matras = [];
 
-  tokens.forEach((token, index) => {
+  const tokensWithMatras = setMatras(tokens);
 
-    const prevToken = (index > 0) ? tokens[index - 1] : { matra: undefined };
+  tokensWithMatras.forEach((token, index) => {
+
+    const prevToken = (index > 0) ? tokensWithMatras[index - 1] : { matra: undefined };
     const matraInsertIndex = (matras.length) ? matras.length - 1 : 0;
 
     if (token.matra === 0) {
