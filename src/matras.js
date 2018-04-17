@@ -16,11 +16,48 @@ export const getMatra = (type, aksharaIndex) => {
 
 };
 
+/* eslint-disable complexity */
+
 export const getMatras = tokens => {
 
   const matras = [];
 
-  tokens.forEach(token => token.matra);
+  tokens.forEach((token, index) => {
+
+    const prevToken = (index > 0) ? tokens[index - 1] : { matra: undefined };
+    const matraInsertIndex = (matras.length) ? matras.length - 1 : 0;
+
+    if (token.matra === 0) {
+
+      if (prevToken.matra === 1) {
+
+        matras[matraInsertIndex] = 2;
+
+      }
+
+    } else if (token.matra === 1) {
+
+      if (token.type !== 'vowelMarks') {
+
+        matras.push(token.matra);
+
+      }
+
+    } else if (token.matra === 2) {
+
+      if (prevToken.matra === 1) {
+
+        matras[matraInsertIndex] = token.matra;
+
+      } else {
+
+        matras.push(token.matra);
+
+      }
+
+    }
+
+  });
 
   return matras;
 
