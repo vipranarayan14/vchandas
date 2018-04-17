@@ -1,19 +1,13 @@
 export const getChandas = (ganas, chandasList) => {
 
-  let chandas = '';
+  const chandas = chandasList[ganas];
 
-  for (let i = 0, l = chandasList.length; i < l; i += 1) {
+  if (chandas) {
 
-    if (ganas === (chandasList[i].ganas)) {
-
-      chandas = chandasList[i];
-
-      break;
-
-    }
+    return chandas;
 
   }
 
-  return chandas;
+  return { name: 'Not found' };
 
 };
