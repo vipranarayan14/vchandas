@@ -61,7 +61,7 @@ window["vChandas"] =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -74,50 +74,13 @@ window["vChandas"] =
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var getMatra = exports.getMatra = function getMatra(type, aksharaIndex) {
-
-  var matra = { 'ayogavaha': 2, 'consonants': 1, 'deadConsonants': 0 }[type];
-
-  if (matra !== undefined) {
-
-    return matra;
-  }
-
-  var shortVowelIndexes = { LLi: 8, RRi: 6, a: 0, i: 2, u: 4 };
-
-  matra = Object.values(shortVowelIndexes).includes(aksharaIndex) ? 1 : 2;
-
-  return matra;
-};
-
-var getMatras = exports.getMatras = function getMatras(tokens) {
-
-  var matras = [];
-
-  tokens.forEach(function (token) {
-    return token.matra;
-  });
-
-  return matras;
-};
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 exports.vChandas = undefined;
 
-var _chandas = __webpack_require__(2);
+var _chandas = __webpack_require__(1);
 
-var _ganas = __webpack_require__(3);
+var _ganas = __webpack_require__(2);
 
-var _matras = __webpack_require__(0);
+var _matras = __webpack_require__(3);
 
 var _sliceDetails = __webpack_require__(4);
 
@@ -147,13 +110,9 @@ var vChandas = exports.vChandas = function vChandas() {
 
     var tokens = (0, _vtokenize.vTokenize)(inStr, maxTokenLength, (0, _sliceDetails.getSliceDetails)(schemeTree));
 
-    // console.log('tokens', tokens);
-
     var syllables = (0, _syllables.getSyllables)(tokens);
 
     var matras = (0, _matras.getMatras)(tokens, ignoreLastLaghu);
-
-    console.log('syllables', matras);
 
     var ganas = (0, _ganas.getGanas)(matras);
 
@@ -169,7 +128,7 @@ var vChandas = exports.vChandas = function vChandas() {
 };
 
 /***/ }),
-/* 2 */
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -180,19 +139,73 @@ Object.defineProperty(exports, "__esModule", {
 });
 var getChandas = exports.getChandas = function getChandas(ganas, chandasList) {
 
-  var chandas = '';
+  var chandas = chandasList[ganas];
 
-  for (var i = 0, l = chandasList.length; i < l; i += 1) {
+  if (chandas) {
 
-    if (ganas === chandasList[i].ganas) {
-
-      chandas = chandasList[i];
-
-      break;
-    }
+    return chandas;
   }
 
-  return chandas;
+  return { name: 'Not found' };
+};
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var ganasList = {
+
+  'ga,ga,ga': 'ma',
+  'ga,ga,la': 'ta',
+  'ga,la,ga': 'ra',
+  'ga,la,la': 'bha',
+  'la,ga,ga': 'ya',
+  'la,ga,la': 'ja',
+  'la,la,ga': 'sa',
+  'la,la,la': 'na'
+
+};
+
+var makeMatraGroups = function makeMatraGroups(matras) {
+
+  var chunk = 3;
+
+  var matraGroups = [];
+
+  for (var i = 0, len = matras.length; i < len; i += chunk) {
+
+    matraGroups.push(matras.slice(i, i + chunk).join(','));
+  }
+
+  return matraGroups;
+};
+
+var getGanas = exports.getGanas = function getGanas(matras) {
+
+  var ganas = [];
+
+  var matraGroups = makeMatraGroups(matras);
+
+  matraGroups.forEach(function (matraGroup) {
+
+    var gana = ganasList[matraGroup];
+
+    if (gana) {
+
+      ganas.push(gana);
+    } else {
+
+      ganas.push(matraGroup);
+    }
+  });
+
+  return ganas.join('|');
 };
 
 /***/ }),
@@ -205,50 +218,75 @@ var getChandas = exports.getChandas = function getChandas(ganas, chandasList) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var ganasList = [{
-  name: 'Ma',
-  pattern: 'G,G,G'
-}, {
-  name: 'Na',
-  pattern: 'L,L,L'
-}, {
-  name: 'Bha',
-  pattern: 'G,L,L'
-}, {
-  name: 'Ya',
-  pattern: 'L,G,G'
-}, {
-  name: 'Ja',
-  pattern: 'L,G,L'
-}, {
-  name: 'Ra',
-  pattern: 'G,L,G'
-}, {
-  name: 'Sa',
-  pattern: 'L,L,G'
-}, {
-  name: 'Ta',
-  pattern: 'G,G,L'
-}];
+var setMatra = function setMatra(token) {
 
-var getGanas = exports.getGanas = function getGanas(matras) {
+  var matra = { 'ayogavaha': 2, 'consonants': 1, 'deadConsonants': 0 }[token.type];
 
-  var ganas = [];
+  if (matra !== undefined) {
 
-  var matraGroups = [];
-
-  var matrasCopy = matras.slice(0);
-
-  while (matrasCopy.length) {
-
-    matraGroups.push(matrasCopy.splice(0, 3));
+    return Object.assign({}, token, { matra: matra });
   }
 
-  ganasList.find(function (gana) {
-    return gana.pattern === matraGroups;
-  }); //TODO: handle reminder matras.
+  var shortVowelIndexes = { LLi: 8, RRi: 6, a: 0, i: 2, u: 4 };
 
-  return ganas;
+  matra = Object.values(shortVowelIndexes).includes(token.aksharaIndex) ? 1 : 2;
+
+  return Object.assign({}, token, { matra: matra });
+};
+
+var setMatras = function setMatras(tokens) {
+
+  var tokensWithMatras = [];
+
+  tokens.forEach(function (token) {
+
+    if (token.type !== 'unknown') {
+
+      tokensWithMatras.push(setMatra(token));
+    }
+  });
+
+  return tokensWithMatras;
+};
+
+/* eslint-disable complexity */
+
+var getMatras = exports.getMatras = function getMatras(tokens) {
+
+  var matras = [];
+
+  var tokensWithMatras = setMatras(tokens);
+
+  tokensWithMatras.forEach(function (token, index) {
+
+    var prevToken = index > 0 ? tokensWithMatras[index - 1] : { matra: undefined };
+    var matraInsertIndex = matras.length ? matras.length - 1 : 0;
+
+    if (token.matra === 0) {
+
+      if (prevToken.matra === 1) {
+
+        matras[matraInsertIndex] = 'ga';
+      }
+    } else if (token.matra === 1) {
+
+      if (token.type !== 'vowelMarks') {
+
+        matras.push('la');
+      }
+    } else if (token.matra === 2) {
+
+      if (prevToken.matra === 1) {
+
+        matras[matraInsertIndex] = 'ga';
+      } else {
+
+        matras.push('ga');
+      }
+    }
+  });
+
+  return matras;
 };
 
 /***/ }),
@@ -305,7 +343,7 @@ var getSyllables = exports.getSyllables = function getSyllables(tokens) {
 
     if (token.type === 'deadConsonants') {
 
-      if (index === tokens.length - 1) {
+      if (index === tokens.length - 1 || prevToken.type === 'deadConsonants') {
 
         syllables[syllables.length - 1] += token.akshara;
       } else {
@@ -346,10 +384,6 @@ var getSyllables = exports.getSyllables = function getSyllables(tokens) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.makeSchemeTree = undefined;
-
-var _matras = __webpack_require__(0);
-
 var makeSchemeLeaf = function makeSchemeLeaf(akshara, aksharaIndex, schemeBranch, schemeSubset, tokenLengths) {
 
   if (akshara) {
@@ -357,7 +391,7 @@ var makeSchemeLeaf = function makeSchemeLeaf(akshara, aksharaIndex, schemeBranch
     schemeBranch[akshara] = {
 
       akshara: akshara,
-      matra: (0, _matras.getMatra)(schemeSubset, aksharaIndex),
+      aksharaIndex: aksharaIndex,
       type: schemeSubset
 
     };
