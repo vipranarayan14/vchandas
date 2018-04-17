@@ -10,7 +10,7 @@ export const getSyllables = tokens => {
 
     if (token.type === 'deadConsonants') {
 
-      if (index === tokens.length - 1) {
+      if (index === tokens.length - 1 || prevToken.type === 'deadConsonants') {
 
         syllables[syllables.length - 1] += token.akshara;
 
