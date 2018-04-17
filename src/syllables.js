@@ -1,18 +1,59 @@
-export const syllables = {
+/* eslint-disable complexity */
 
-  consonants: 'क ख ग घ ङ च छ ज झ ञ ट ठ ड ढ ण त थ द ध न प फ ब भ म य र ल व श ष स ह ळ'.split(' '),
+export const getSyllables = tokens => {
 
-  virama: '्',
+  const syllables = [];
 
-  vowels: {
-    long: {
-      chars: 'आ ई ऊ ॠ ए ऐ ओ औ'.split(' '),
-      marks: 'ा ी ू ॄ े ै ो ौ ं ः'.split(' ')
-    },
-    short: {
-      chars: 'अ इ उ ऋ ऌ'.split(' '),
-      marks: 'ि ु ृ ॢ'.split(' ')
+  tokens.forEach((token, index) => {
+
+    const prevToken = (index > 0) ? tokens[index - 1] : { type: 'strStart' };
+
+    if (token.type === 'deadConsonants') {
+
+      if (index === tokens.length - 1) {
+
+        syllables[syllables.length - 1] += token.akshara;
+
+      } else {
+
+        syllables.push(token.akshara);
+
+      }
+
+    } else if (token.type === 'consonants') {
+
+      if (prevToken.type === 'deadConsonants') {
+
+        syllables[syllables.length - 1] += token.akshara;
+
+      } else {
+
+        syllables.push(token.akshara);
+
+      }
+
+    } else if (token.type === 'vowelMarks' && prevToken.type === 'consonants') {
+
+      syllables[syllables.length - 1] += token.akshara;
+
+    } else if (
+      token.type === 'ayogavaha' &&
+      (
+        prevToken.type === 'vowelMarks' ||
+        prevToken.type === 'consonants'
+      )
+    ) {
+
+      syllables[syllables.length - 1] += token.akshara;
+
+    } else if (token.type === 'vowels') {
+
+      syllables.push(token.akshara);
+
     }
-  }
+
+  });
+
+  return syllables;
 
 };

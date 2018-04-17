@@ -2,7 +2,7 @@ import { getChandas } from './chandas';
 import { getGanas } from './ganas';
 import { getMatras } from './matras';
 import { getSliceDetails } from './slice-details';
-import { getSyllables } from './get-syllables';
+import { getSyllables } from './syllables';
 import { makeSchemeTree } from './scheme-tree';
 import { prepareChandasList } from './init';
 import { schemes } from 'vtranslit-schemes';
