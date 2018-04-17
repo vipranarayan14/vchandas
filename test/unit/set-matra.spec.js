@@ -6,9 +6,7 @@ import { schemes } from 'vtranslit-schemes';
 
 const devanagariScheme = schemes.Deva;
 
-const {
-  schemeTree,
-} = makeSchemeTree(devanagariScheme);
+const { schemeTree } = makeSchemeTree(devanagariScheme);
 
 // for testing a private module
 const matras = rewire('../../src/matras');
