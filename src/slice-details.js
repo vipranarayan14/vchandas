@@ -10,8 +10,8 @@ export const getSliceDetails = schemeTree => slice => {
 
   } else {
 
-    sliceDetails = {
-      slice,
+    sliceDetails = { //TODO: Handle 'unknown' slices in vTokenize
+      akshara: '',
       type: 'unknown'
     };
 
