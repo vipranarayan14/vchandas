@@ -51,7 +51,7 @@ export const getMatras = tokens => {
 
       if (prevToken.matra === 1) {
 
-        matras[matraInsertIndex] = 2;
+        matras[matraInsertIndex] = 'ga';
 
       }
 
@@ -59,7 +59,7 @@ export const getMatras = tokens => {
 
       if (token.type !== 'vowelMarks') {
 
-        matras.push(token.matra);
+        matras.push('la');
 
       }
 
@@ -67,11 +67,11 @@ export const getMatras = tokens => {
 
       if (prevToken.matra === 1) {
 
-        matras[matraInsertIndex] = token.matra;
+        matras[matraInsertIndex] = 'ga';
 
       } else {
 
-        matras.push(token.matra);
+        matras.push('ga');
 
       }
 
