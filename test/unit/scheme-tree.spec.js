@@ -58,78 +58,8 @@ describe('schemeTree for vTokenize', () => {
 
     expect(schemeTree['ङ']).to.deep.equal({
       akshara: 'ङ',
-      matra: 1,
+      aksharaIndex: 4,
       type: 'consonants'
-    });
-
-  });
-
-  it('should contain the matra of `त्` as 0.', () => {
-
-    expect(schemeTree['त्']).to.deep.equal({
-      akshara: 'त्',
-      matra: 0,
-      type: 'deadConsonants'
-    });
-
-  });
-
-  it('should contain the matra of `प` as 1.', () => {
-
-    expect(schemeTree['प']).to.deep.equal({
-      akshara: 'प',
-      matra: 1,
-      type: 'consonants'
-    });
-
-  });
-
-  it('should contain the matra of `ऋ` as 1.', () => {
-
-    expect(schemeTree['ऋ']).to.deep.equal({
-      akshara: 'ऋ',
-      matra: 1,
-      type: 'vowels'
-    });
-
-  });
-
-  it('should contain the matra of `ॢ` as 1.', () => {
-
-    expect(schemeTree['ॢ']).to.deep.equal({
-      akshara: 'ॢ',
-      matra: 1,
-      type: 'vowelMarks'
-    });
-
-  });
-
-  it('should contain the matra of `ए` as 2.', () => {
-
-    expect(schemeTree['ए']).to.deep.equal({
-      akshara: 'ए',
-      matra: 2,
-      type: 'vowels'
-    });
-
-  });
-
-  it('should contain the matra of `ो` as 2.', () => {
-
-    expect(schemeTree['ो']).to.deep.equal({
-      akshara: 'ो',
-      matra: 2,
-      type: 'vowelMarks'
-    });
-
-  });
-
-  it('should contain the matra of `ं` as 2.', () => {
-
-    expect(schemeTree['ं']).to.deep.equal({
-      akshara: 'ं',
-      matra: 2,
-      type: 'ayogavaha'
     });
 
   });
