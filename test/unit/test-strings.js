@@ -1,66 +1,77 @@
 export const testStrings = [
 
   {
+    chandas: 'Not found',
     ganas: '',
     matras: [],
     string: 'ग्',
     syllables: []
   },
   {
+    chandas: 'shrIH',
     ganas: 'ga',
     matras: ['ga'],
     string: 'नं',
     syllables: ['नं']
   },
   {
+    chandas: 'Not found',
     ganas: 'la',
     matras: ['la'],
     string: 'क्ष्त्र्ज्ञ',
     syllables: ['क्ष्त्र्ज्ञ']
   },
   {
+    chandas: 'Not found',
     ganas: 'la,la',
     matras: ['la', 'la'],
     string: 'इव',
     syllables: ['इ', 'व']
   },
   {
+    chandas: 'Not found',
     ganas: 'ga,la',
     matras: ['ga', 'la'],
     string: 'सोऽपि',
     syllables: ['सो', 'पि']
   },
   {
+    chandas: 'mRRigI',
     ganas: 'ra',
     matras: ['ga', 'la', 'ga'],
     string: 'रावणः',
     syllables: ['रा', 'व', 'णः']
   },
   {
+    chandas: 'mRRigI',
     ganas: 'ra',
     matras: ['ga', 'la', 'ga'],
     string: 'नम्रता',
     syllables: ['न', 'म्र', 'ता']
   },
   {
+    chandas: 'Not found',
     ganas: 'ta|ga',
     matras: ['ga', 'ga', 'la', 'ga'],
     string: 'रामायणम्',
     syllables: ['रा', 'मा', 'य', 'णम्']
   },
   {
+    chandas: 'Not found',
     ganas: 'sa|ga',
     matras: ['la', 'la', 'ga', 'ga'],
     string: 'न निमग्नं',
     syllables: ['न', 'नि', 'म', 'ग्नं']
   },
   {
+    chandas: 'mRRigI',
     ganas: 'ra',
     matras: ['ga', 'la', 'ga'],
     string: 'क्रन्दनम्',
     syllables: ['क्र', 'न्द', 'नम्']
   },
   {
+    chandas: 'Not found',
     ganas: 'sa|sa|sa|sa',
     matras: ['la', 'la', 'ga', 'la', 'la', 'ga', 'la', 'la', 'ga', 'la', 'la', 'ga'],
     string: 'विदिताखिलशास्त्रसुधाजलधे',
@@ -69,6 +80,7 @@ export const testStrings = [
     ]
   },
   {
+    chandas: 'Not found',
     ganas: 'ya|ya|ya|ya',
     matras: ['la', 'ga', 'ga', 'la', 'ga', 'ga', 'la', 'ga', 'ga', 'la', 'ga', 'ga'],
     string: 'मुखान्निःसरन्ते गिरश्चापि चित्रम्',
@@ -77,6 +89,7 @@ export const testStrings = [
     ]
   },
   {
+    chandas: 'Not found',
     ganas: 'ya|ya|ya|ya',
     matras: ['la', 'ga', 'ga', 'la', 'ga', 'ga', 'la', 'ga', 'ga', 'la', 'ga', 'ga'],
     string: 'न जानामि शब्दं न जानामि चार्थं',
