@@ -71,6 +71,13 @@ export const testStrings = [
     syllables: ['क्र', 'न्द', 'नम्']
   },
   {
+    chandas: 'vidyunmAlA',
+    ganas: 'ma|ma|ga,ga',
+    matras: ['ga', 'ga', 'ga', 'ga', 'ga', 'ga', 'ga', 'ga'],
+    string: 'विद्युन्मालालोलान् भोगान्',
+    syllables: ['वि', 'द्यु', 'न्मा', 'ला', 'लो', 'ला', 'न्भो', 'गा', 'न्']
+  },
+  {
     chandas: 'Not found',
     ganas: 'sa|sa|sa|sa',
     matras: ['la', 'la', 'ga', 'la', 'la', 'ga', 'la', 'la', 'ga', 'la', 'la', 'ga'],
