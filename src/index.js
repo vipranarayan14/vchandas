@@ -1,3 +1,4 @@
+import { cleanString } from './utils';
 import { devanagariScheme } from 'vtranslit-schemes';
 import { getChandas } from './chandas';
 import { getGanas } from './ganas';
@@ -17,10 +18,10 @@ export const vChandas = () => {
     maxTokenLength
   } = makeSchemeTree(devanagariScheme);
 
-  return (inStr, ignoreLastLaghu = false) => {
+  return (str, ignoreLastLaghu = false) => {
 
     const tokens = vTokenize(
-      inStr,
+      cleanString(str),
       maxTokenLength,
       getSliceDetails(schemeTree)
     );

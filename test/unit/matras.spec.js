@@ -1,3 +1,4 @@
+import { cleanString } from '../../src/utils';
 import { devanagariScheme } from 'vtranslit-schemes';
 import { expect } from 'chai';
 import { getMatras } from '../../src/matras';
@@ -11,10 +12,10 @@ const {
   maxTokenLength
 } = makeSchemeTree(devanagariScheme);
 
-const getTokens = inStr =>
+const getTokens = str =>
 
   vTokenize(
-    inStr,
+    cleanString(str),
     maxTokenLength,
     getSliceDetails(schemeTree)
   );
