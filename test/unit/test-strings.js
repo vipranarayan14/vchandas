@@ -1,7 +1,7 @@
 export const testStrings = [
 
   {
-    chandas: 'Not found',
+    chandas: null,
     ganas: '',
     matras: [],
     string: 'ग्',
@@ -15,21 +15,21 @@ export const testStrings = [
     syllables: ['नं']
   },
   {
-    chandas: 'Not found',
+    chandas: null,
     ganas: 'la',
     matras: ['la'],
     string: 'क्ष्त्र्ज्ञ',
     syllables: ['क्ष्त्र्ज्ञ']
   },
   {
-    chandas: 'Not found',
+    chandas: null,
     ganas: 'la,la',
     matras: ['la', 'la'],
     string: 'इव',
     syllables: ['इ', 'व']
   },
   {
-    chandas: 'Not found',
+    chandas: null,
     ganas: 'ga,la',
     matras: ['ga', 'la'],
     string: 'सोऽपि',
@@ -57,28 +57,28 @@ export const testStrings = [
     syllables: ['क्र', 'न्द', 'नम्']
   },
   {
-    chandas: 'Not found',
+    chandas: null,
     ganas: 'ta|ga',
     matras: ['ga', 'ga', 'la', 'ga'],
     string: 'रामायणम्',
     syllables: ['रा', 'मा', 'य', 'णम्']
   },
   {
-    chandas: 'Not found',
+    chandas: null,
     ganas: 'sa|ga',
     matras: ['la', 'la', 'ga', 'ga'],
     string: 'न निमग्नं',
     syllables: ['न', 'नि', 'म', 'ग्नं']
   },
   {
-    chandas: 'Not found',
+    chandas: null,
     ganas: 'ma|la,la',
     matras: ['ga', 'ga', 'ga', 'la', 'la'],
     string: 'लोकान् गच्छति',
     syllables: ['लो', 'का', 'न्ग', 'च्छ', 'ति']
   },
   {
-    chandas: 'Not found',
+    chandas: null,
     ganas: 'ja|la,la',
     matras: ['la', 'ga', 'la', 'la', 'la'],
     string: 'पठन् लिखति',
@@ -92,7 +92,7 @@ export const testStrings = [
     syllables: ['वि', 'द्यु', 'न्मा', 'ला', 'लो', 'ला', 'न्भो', 'गान्']
   },
   {
-    chandas: 'Not found',
+    chandas: null,
     ganas: 'sa|sa|sa|sa',
     matras: ['la', 'la', 'ga', 'la', 'la', 'ga', 'la', 'la', 'ga', 'la', 'la', 'ga'],
     string: 'विदिताखिलशास्त्रसुधाजलधे',
@@ -101,7 +101,7 @@ export const testStrings = [
     ]
   },
   {
-    chandas: 'Not found',
+    chandas: null,
     ganas: 'ya|ya|ya|ya',
     matras: ['la', 'ga', 'ga', 'la', 'ga', 'ga', 'la', 'ga', 'ga', 'la', 'ga', 'ga'],
     string: 'मुखान्निःसरन्ते गिरश्चापि चित्रम्',
@@ -110,7 +110,7 @@ export const testStrings = [
     ]
   },
   {
-    chandas: 'Not found',
+    chandas: null,
     ganas: 'ya|ya|ya|ya',
     matras: ['la', 'ga', 'ga', 'la', 'ga', 'ga', 'la', 'ga', 'ga', 'la', 'ga', 'ga'],
     string: 'न जानामि शब्दं न जानामि चार्थं',

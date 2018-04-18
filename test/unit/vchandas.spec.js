@@ -11,7 +11,17 @@ describe('vChandas', () => {
 
     it(`should return chandas for '${testString.string}' as ${testString.chandas}`, () => {
 
-      expect(vc(testString.string).chandas.name).to.equal(testString.chandas);
+      const chandas = vc(testString.string).chandas;
+
+      if (chandas) {
+
+        expect(chandas.name).to.equal(testString.chandas);
+
+      } else {
+
+        expect(chandas).to.equal(testString.chandas);
+
+      }
 
     });
 
