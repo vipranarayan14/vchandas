@@ -16,12 +16,10 @@ npm install vchandas
 
 ```js
 const { vChandas } = require('../');
-
 ```
 
 ## Browser usage
 
 ```js
 const vChandas = window.vChandas;
-
 ```
