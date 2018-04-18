@@ -280,6 +280,9 @@ var setMatras = function setMatras(tokens) {
 
 var getMatras = exports.getMatras = function getMatras(tokens) {
 
+  var laghu = 'la';
+  var guru = 'ga';
+
   var matras = [];
 
   var tokensWithMatras = setMatras(tokens);
@@ -293,22 +296,22 @@ var getMatras = exports.getMatras = function getMatras(tokens) {
 
       if (prevToken.matra === 1) {
 
-        matras[matraInsertIndex] = 'ga';
+        matras[matraInsertIndex] = guru;
       }
     } else if (token.matra === 1) {
 
       if (token.type !== 'vowelMarks') {
 
-        matras.push('la');
+        matras.push(laghu);
       }
     } else if (token.matra === 2) {
 
       if (prevToken.matra === 1) {
 
-        matras[matraInsertIndex] = 'ga';
+        matras[matraInsertIndex] = guru;
       } else {
 
-        matras.push('ga');
+        matras.push(guru);
       }
     }
   });
