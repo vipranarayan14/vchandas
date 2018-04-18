@@ -173,7 +173,7 @@ var getChandas = exports.getChandas = function getChandas(ganas, chandasList) {
     return chandas;
   }
 
-  return { name: 'Not found' };
+  return null;
 };
 
 /***/ }),
