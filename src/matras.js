@@ -38,6 +38,9 @@ const setMatras = tokens => {
 
 export const getMatras = tokens => {
 
+  const laghu = 'la';
+  const guru = 'ga';
+
   const matras = [];
 
   const tokensWithMatras = setMatras(tokens);
@@ -51,7 +54,7 @@ export const getMatras = tokens => {
 
       if (prevToken.matra === 1) {
 
-        matras[matraInsertIndex] = 'ga';
+        matras[matraInsertIndex] = guru;
 
       }
 
@@ -59,7 +62,7 @@ export const getMatras = tokens => {
 
       if (token.type !== 'vowelMarks') {
 
-        matras.push('la');
+        matras.push(laghu);
 
       }
 
@@ -67,11 +70,11 @@ export const getMatras = tokens => {
 
       if (prevToken.matra === 1) {
 
-        matras[matraInsertIndex] = 'ga';
+        matras[matraInsertIndex] = guru;
 
       } else {
 
-        matras.push('ga');
+        matras.push(guru);
 
       }
 
