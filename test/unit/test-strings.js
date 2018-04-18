@@ -50,6 +50,13 @@ export const testStrings = [
     syllables: ['न', 'म्र', 'ता']
   },
   {
+    chandas: 'mRRigI',
+    ganas: 'ra',
+    matras: ['ga', 'la', 'ga'],
+    string: 'क्रन्दनम्',
+    syllables: ['क्र', 'न्द', 'नम्']
+  },
+  {
     chandas: 'Not found',
     ganas: 'ta|ga',
     matras: ['ga', 'ga', 'la', 'ga'],
@@ -64,18 +71,25 @@ export const testStrings = [
     syllables: ['न', 'नि', 'म', 'ग्नं']
   },
   {
-    chandas: 'mRRigI',
-    ganas: 'ra',
-    matras: ['ga', 'la', 'ga'],
-    string: 'क्रन्दनम्',
-    syllables: ['क्र', 'न्द', 'नम्']
+    chandas: 'Not found',
+    ganas: 'ma|la,la',
+    matras: ['ga', 'ga', 'ga', 'la', 'la'],
+    string: 'लोकान् गच्छति',
+    syllables: ['लो', 'का', 'न्ग', 'च्छ', 'ति']
+  },
+  {
+    chandas: 'Not found',
+    ganas: 'ja|la,la',
+    matras: ['la', 'ga', 'la', 'la', 'la'],
+    string: 'पठन् लिखति',
+    syllables: ['प', 'ठ', 'न्लि', 'ख', 'ति']
   },
   {
     chandas: 'vidyunmAlA',
     ganas: 'ma|ma|ga,ga',
     matras: ['ga', 'ga', 'ga', 'ga', 'ga', 'ga', 'ga', 'ga'],
     string: 'विद्युन्मालालोलान् भोगान्',
-    syllables: ['वि', 'द्यु', 'न्मा', 'ला', 'लो', 'ला', 'न्भो', 'गा', 'न्']
+    syllables: ['वि', 'द्यु', 'न्मा', 'ला', 'लो', 'ला', 'न्भो', 'गान्']
   },
   {
     chandas: 'Not found',
