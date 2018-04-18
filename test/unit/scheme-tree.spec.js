@@ -1,11 +1,11 @@
-import { devanagariScheme } from 'vtranslit-schemes';
 import { expect } from 'chai';
 import { makeSchemeTree } from '../../src/scheme-tree';
+import vTranslitDevaScheme from 'vtranslit-deva-scheme';
 
 const {
   schemeTree,
   maxTokenLength
-} = makeSchemeTree(devanagariScheme);
+} = makeSchemeTree(vTranslitDevaScheme);
 
 describe('schemeTree for vTokenize', () => {
 

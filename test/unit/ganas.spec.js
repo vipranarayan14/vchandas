@@ -1,5 +1,4 @@
 import { cleanString } from '../../src/utils';
-import { devanagariScheme } from 'vtranslit-schemes';
 import { expect } from 'chai';
 import { getGanas } from '../../src/ganas';
 import { getMatras } from '../../src/matras';
@@ -7,11 +6,12 @@ import { getSliceDetails } from '../../src/slice-details';
 import { makeSchemeTree } from '../../src/scheme-tree';
 import { testStrings } from './test-strings';
 import { vTokenize } from 'vtokenize';
+import vTranslitDevaScheme from 'vtranslit-deva-scheme';
 
 const {
   schemeTree,
   maxTokenLength
-} = makeSchemeTree(devanagariScheme);
+} = makeSchemeTree(vTranslitDevaScheme);
 
 const getTokens = str =>
 

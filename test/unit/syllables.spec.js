@@ -1,16 +1,16 @@
 import { cleanString } from '../../src/utils';
-import { devanagariScheme } from 'vtranslit-schemes';
 import { expect } from 'chai';
 import { getSliceDetails } from '../../src/slice-details';
 import { getSyllables } from '../../src/syllables';
 import { makeSchemeTree } from '../../src/scheme-tree';
 import { testStrings } from './test-strings';
 import { vTokenize } from 'vtokenize';
+import vTranslitDevaScheme from 'vtranslit-deva-scheme';
 
 const {
   schemeTree,
   maxTokenLength
-} = makeSchemeTree(devanagariScheme);
+} = makeSchemeTree(vTranslitDevaScheme);
 
 const getTokens = str =>
 

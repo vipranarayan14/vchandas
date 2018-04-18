@@ -1,9 +1,9 @@
-import { devanagariScheme } from 'vtranslit-schemes';
 import { expect } from 'chai';
 import { makeSchemeTree } from '../../src/scheme-tree';
 import rewire from 'rewire';
+import vTranslitDevaScheme from 'vtranslit-deva-scheme';
 
-const { schemeTree } = makeSchemeTree(devanagariScheme);
+const { schemeTree } = makeSchemeTree(vTranslitDevaScheme);
 
 // for testing a private module
 const matras = rewire('../../src/matras');

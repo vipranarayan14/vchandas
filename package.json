@@ -36,7 +36,7 @@
   "dependencies": {
     "rewire": "^4.0.0",
     "vtokenize": "^2.1.1",
-    "vtranslit-schemes": "^2.0.3"
+    "vtranslit-deva-scheme": "github:vipranarayan14/vtranslit-deva-scheme"
   },
   "repository": "https://github.com/vipranarayan14/vchandas.git"
 }

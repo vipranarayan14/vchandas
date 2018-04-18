@@ -1,5 +1,4 @@
 import { cleanString } from './utils';
-import { devanagariScheme } from 'vtranslit-schemes';
 import { getChandas } from './chandas';
 import { getGanas } from './ganas';
 import { getMatras } from './matras';
@@ -8,6 +7,7 @@ import { getSyllables } from './syllables';
 import { makeSchemeTree } from './scheme-tree';
 import { prepareChandasList } from './init';
 import { vTokenize } from 'vtokenize';
+import vTranslitDevaScheme from 'vtranslit-deva-scheme';
 
 export const vChandas = () => {
 
@@ -16,7 +16,7 @@ export const vChandas = () => {
   const {
     schemeTree,
     maxTokenLength
-  } = makeSchemeTree(devanagariScheme);
+  } = makeSchemeTree(vTranslitDevaScheme);
 
   return (str, ignoreLastLaghu = false) => {
 
