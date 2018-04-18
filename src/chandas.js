@@ -8,6 +8,6 @@ export const getChandas = (ganas, chandasList) => {
 
   }
 
-  return { name: 'Not found' };
+  return null;
 
 };
