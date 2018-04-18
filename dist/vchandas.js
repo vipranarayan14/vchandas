@@ -76,23 +76,25 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.vChandas = undefined;
 
-var _vtranslitSchemes = __webpack_require__(1);
+var _utils = __webpack_require__(1);
 
-var _chandas = __webpack_require__(2);
+var _vtranslitSchemes = __webpack_require__(2);
 
-var _ganas = __webpack_require__(3);
+var _chandas = __webpack_require__(3);
 
-var _matras = __webpack_require__(4);
+var _ganas = __webpack_require__(4);
 
-var _sliceDetails = __webpack_require__(5);
+var _matras = __webpack_require__(5);
 
-var _syllables = __webpack_require__(6);
+var _sliceDetails = __webpack_require__(6);
 
-var _schemeTree = __webpack_require__(7);
+var _syllables = __webpack_require__(7);
 
-var _init = __webpack_require__(8);
+var _schemeTree = __webpack_require__(8);
 
-var _vtokenize = __webpack_require__(10);
+var _init = __webpack_require__(9);
+
+var _vtokenize = __webpack_require__(11);
 
 var vChandas = exports.vChandas = function vChandas() {
 
@@ -102,11 +104,11 @@ var vChandas = exports.vChandas = function vChandas() {
       schemeTree = _makeSchemeTree.schemeTree,
       maxTokenLength = _makeSchemeTree.maxTokenLength;
 
-  return function (inStr) {
+  return function (str) {
     var ignoreLastLaghu = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
 
-    var tokens = (0, _vtokenize.vTokenize)(inStr, maxTokenLength, (0, _sliceDetails.getSliceDetails)(schemeTree));
+    var tokens = (0, _vtokenize.vTokenize)((0, _utils.cleanString)(str), maxTokenLength, (0, _sliceDetails.getSliceDetails)(schemeTree));
 
     var syllables = (0, _syllables.getSyllables)(tokens);
 
@@ -127,6 +129,20 @@ var vChandas = exports.vChandas = function vChandas() {
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var cleanString = exports.cleanString = function cleanString(str) {
+  return str.slice(0).trim().replace(/\s/g, '');
+};
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -422,7 +438,7 @@ var getScheme = exports.getScheme = function getScheme(schemeCode) {
 });
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -444,7 +460,7 @@ var getChandas = exports.getChandas = function getChandas(ganas, chandasList) {
 };
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -503,7 +519,7 @@ var getGanas = exports.getGanas = function getGanas(matras) {
 };
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -584,7 +600,7 @@ var getMatras = exports.getMatras = function getMatras(tokens) {
 };
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -616,7 +632,7 @@ var getSliceDetails = exports.getSliceDetails = function getSliceDetails(schemeT
 };
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -669,7 +685,7 @@ var getSyllables = exports.getSyllables = function getSyllables(tokens) {
 };
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -729,7 +745,7 @@ var makeSchemeTree = exports.makeSchemeTree = function makeSchemeTree(fromScheme
 };
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -740,7 +756,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.prepareChandasList = undefined;
 
-var _chandasList = __webpack_require__(9);
+var _chandasList = __webpack_require__(10);
 
 var prepareChandasList = exports.prepareChandasList = function prepareChandasList() {
 
@@ -757,7 +773,7 @@ var prepareChandasList = exports.prepareChandasList = function prepareChandasLis
 };
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -973,7 +989,7 @@ var chandasList = exports.chandasList = [{
 }];
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 (function webpackUniversalModuleDefinition(root, factory) {
