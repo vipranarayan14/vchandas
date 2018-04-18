@@ -38,7 +38,7 @@ const makeSchemeBranch = (scheme, schemeSubset, tokenLengths) => {
 
 };
 
-export const makeSchemeTree = fromScheme => {
+export const makeSchemeTree = scheme => {
 
   const tokenLengths = [];
 
@@ -46,10 +46,10 @@ export const makeSchemeTree = fromScheme => {
 
   const schemeTree = Object.assign({},
 
-    makeSchemeBranch(fromScheme, 'deadConsonants', tokenLengths),
-    makeSchemeBranch(fromScheme, 'consonants', tokenLengths),
-    makeSchemeBranch(fromScheme, 'vowels', tokenLengths),
-    makeSchemeBranch(fromScheme, 'vowelMarks', tokenLengths),
+    makeSchemeBranch(scheme, 'deadConsonants', tokenLengths),
+    makeSchemeBranch(scheme, 'consonants', tokenLengths),
+    makeSchemeBranch(scheme, 'vowels', tokenLengths),
+    makeSchemeBranch(scheme, 'vowelMarks', tokenLengths),
     makeSchemeBranch({
       'data': {
         'ayogavaha': ['\u0902', '\u0903']
