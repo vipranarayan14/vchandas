@@ -30,11 +30,11 @@
     "eslint": "^4.15.0",
     "husky": "^0.14.3",
     "mocha": "^4.1.0",
+    "rewire": "^4.0.0",
     "rimraf": "^2.6.2",
     "webpack": "^3.10.0"
   },
   "dependencies": {
-    "rewire": "^4.0.0",
     "vtokenize": "^2.1.1",
     "vtranslit-deva-scheme": "github:vipranarayan14/vtranslit-deva-scheme"
   },
