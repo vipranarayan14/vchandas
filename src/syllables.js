@@ -7,10 +7,11 @@ export const getSyllables = tokens => {
   tokens.forEach((token, index) => {
 
     const prevToken = (index > 0) ? tokens[index - 1] : { type: 'strStart' };
+    const isLastToken = index === tokens.length - 1;
 
     if (token.type === 'deadConsonants') {
 
-      if (index === tokens.length - 1 || prevToken.type === 'deadConsonants') {
+      if (isLastToken || prevToken.type === 'deadConsonants') {
 
         syllables[syllables.length - 1] += token.akshara;
 
@@ -20,7 +21,11 @@ export const getSyllables = tokens => {
 
       }
 
-    } else if (token.type === 'consonants') {
+    } else if (token.type === 'ayogavaha' && prevToken.type === 'vowels') {
+
+      syllables[syllables.length - 1] += token.akshara;
+
+    } else if (token.type === 'vowels') {
 
       if (prevToken.type === 'deadConsonants') {
 
@@ -31,24 +36,6 @@ export const getSyllables = tokens => {
         syllables.push(token.akshara);
 
       }
-
-    } else if (token.type === 'vowelMarks' && prevToken.type === 'consonants') {
-
-      syllables[syllables.length - 1] += token.akshara;
-
-    } else if (
-      token.type === 'ayogavaha' &&
-      (
-        prevToken.type === 'vowelMarks' ||
-        prevToken.type === 'consonants'
-      )
-    ) {
-
-      syllables[syllables.length - 1] += token.akshara;
-
-    } else if (token.type === 'vowels') {
-
-      syllables.push(token.akshara);
 
     }
 

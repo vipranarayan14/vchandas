@@ -5,12 +5,12 @@ import { getSliceDetails } from '../../src/slice-details';
 import { makeSchemeTree } from '../../src/scheme-tree';
 import { testStrings } from './test-strings';
 import { vTokenize } from 'vtokenize';
-import vTranslitDevaScheme from 'vtranslit-deva-scheme';
+import vTranslitItrnScheme from 'vtranslit-itrn-scheme';
 
 const {
   schemeTree,
   maxTokenLength
-} = makeSchemeTree(vTranslitDevaScheme);
+} = makeSchemeTree(vTranslitItrnScheme);
 
 const getTokens = str =>
 

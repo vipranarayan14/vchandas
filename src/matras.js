@@ -1,6 +1,6 @@
 const setMatra = token => {
 
-  let matra = { 'ayogavaha': 2, 'consonants': 1, 'deadConsonants': 0, }[token.type];
+  let matra = { 'ayogavaha': 3, 'deadConsonants': 0, 'symbols': -1 }[token.type];
 
   if (matra !== undefined) {
 
@@ -34,7 +34,30 @@ const setMatras = tokens => {
 
 };
 
+const getPrevToken = (tokens, index) =>
+
+  (index > 0) ? tokens[index - 1] : { matra: null, type: 'strStart' };
+
+const getNextToken = (tokens, index) =>
+
+  (index < tokens.length - 1) ? tokens[index + 1] : { matra: null, type: 'strEnd' };
+
+const getMatraInsertIndex = matras =>
+
+  (matras.length) ? matras.length - 1 : 0;
+
 /* eslint-disable complexity */
+
+const isPrevMatraGuru = (prevToken, token, nextToken) =>
+
+  (
+    token.matra === 0 &&
+    prevToken.type === 'vowels' &&
+    (
+      nextToken.matra === 0 ||
+      nextToken.type === 'strEnd'
+    )
+  ) || token.matra === 3;
 
 export const getMatras = tokens => {
 
@@ -47,36 +70,24 @@ export const getMatras = tokens => {
 
   tokensWithMatras.forEach((token, index) => {
 
-    const prevToken = (index > 0) ? tokensWithMatras[index - 1] : { matra: undefined };
-    const matraInsertIndex = (matras.length) ? matras.length - 1 : 0;
+    const prevToken = getPrevToken(tokensWithMatras, index);
+    const nextToken = getNextToken(tokensWithMatras, index);
 
-    if (token.matra === 0) {
+    const matraInsertIndex = getMatraInsertIndex(matras);
 
-      if (prevToken.matra === 1) {
+    if (isPrevMatraGuru(prevToken, token, nextToken)) {
 
-        matras[matraInsertIndex] = guru;
+      matras[matraInsertIndex] = guru;
 
-      }
+    }
 
-    } else if (token.matra === 1) {
+    if (token.matra === 1) {
 
-      if (token.type !== 'vowelMarks') {
-
-        matras.push(laghu);
-
-      }
+      matras.push(laghu);
 
     } else if (token.matra === 2) {
 
-      if (prevToken.matra === 1) {
-
-        matras[matraInsertIndex] = guru;
-
-      } else {
-
-        matras.push(guru);
-
-      }
+      matras.push(guru);
 
     }
 

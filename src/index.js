@@ -7,7 +7,7 @@ import { getSyllables } from './syllables';
 import { makeSchemeTree } from './scheme-tree';
 import { prepareChandasList } from './init';
 import { vTokenize } from 'vtokenize';
-import vTranslitDevaScheme from 'vtranslit-deva-scheme';
+import vTranslitItrnScheme from 'vtranslit-itrn-scheme';
 
 export const vChandas = () => {
 
@@ -16,7 +16,7 @@ export const vChandas = () => {
   const {
     schemeTree,
     maxTokenLength
-  } = makeSchemeTree(vTranslitDevaScheme);
+  } = makeSchemeTree(vTranslitItrnScheme);
 
   return (str, ignoreLastLaghu = false) => {
 

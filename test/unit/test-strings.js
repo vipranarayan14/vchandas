@@ -4,118 +4,113 @@ export const testStrings = [
     chandas: null,
     ganas: '',
     matras: [],
-    string: 'ग्',
+    string: 'g',
     syllables: []
   },
   {
     chandas: 'shrIH',
     ganas: 'ga',
     matras: ['ga'],
-    string: 'नं',
-    syllables: ['नं']
+    string: 'naM',
+    syllables: ['naM']
   },
   {
     chandas: null,
     ganas: 'la',
     matras: ['la'],
-    string: 'क्ष्त्र्ज्ञ',
-    syllables: ['क्ष्त्र्ज्ञ']
+    string: 'kShtrj~na',
+    syllables: ['kShtrj~na']
   },
   {
     chandas: null,
     ganas: 'la,la',
     matras: ['la', 'la'],
-    string: 'इव',
-    syllables: ['इ', 'व']
+    string: 'iva',
+    syllables: ['i', 'va']
   },
   {
     chandas: null,
     ganas: 'ga,la',
     matras: ['ga', 'la'],
-    string: 'सोऽपि',
-    syllables: ['सो', 'पि']
+    string: 'so.api',
+    syllables: ['so', 'pi']
   },
   {
     chandas: 'mRRigI',
     ganas: 'ra',
     matras: ['ga', 'la', 'ga'],
-    string: 'रावणः',
-    syllables: ['रा', 'व', 'णः']
+    string: 'rAvaNaH',
+    syllables: ['rA', 'va', 'NaH']
   },
   {
     chandas: 'mRRigI',
     ganas: 'ra',
     matras: ['ga', 'la', 'ga'],
-    string: 'नम्रता',
-    syllables: ['न', 'म्र', 'ता']
+    string: 'namratA',
+    syllables: ['na', 'mra', 'tA']
   },
   {
     chandas: 'mRRigI',
     ganas: 'ra',
     matras: ['ga', 'la', 'ga'],
-    string: 'क्रन्दनम्',
-    syllables: ['क्र', 'न्द', 'नम्']
+    string: 'krandanam',
+    syllables: ['kra', 'nda', 'nam']
   },
   {
     chandas: null,
     ganas: 'ta|ga',
     matras: ['ga', 'ga', 'la', 'ga'],
-    string: 'रामायणम्',
-    syllables: ['रा', 'मा', 'य', 'णम्']
+    string: 'rAmAyaNam',
+    syllables: ['rA', 'mA', 'ya', 'Nam']
   },
   {
     chandas: null,
     ganas: 'sa|ga',
     matras: ['la', 'la', 'ga', 'ga'],
-    string: 'न निमग्नं',
-    syllables: ['न', 'नि', 'म', 'ग्नं']
+    string: 'na nimagnaM',
+    syllables: ['na', 'ni', 'ma', 'gnaM']
   },
   {
     chandas: null,
     ganas: 'ma|la,la',
     matras: ['ga', 'ga', 'ga', 'la', 'la'],
-    string: 'लोकान् गच्छति',
-    syllables: ['लो', 'का', 'न्ग', 'च्छ', 'ति']
+    string: 'lokAn gachChati',
+    syllables: ['lo', 'kA', 'nga', 'chCha', 'ti']
   },
   {
     chandas: null,
     ganas: 'ja|la,la',
     matras: ['la', 'ga', 'la', 'la', 'la'],
-    string: 'पठन् लिखति',
-    syllables: ['प', 'ठ', 'न्लि', 'ख', 'ति']
+    string: 'paThan likhati',
+    syllables: ['pa', 'Tha', 'nli', 'kha', 'ti']
   },
   {
     chandas: 'vidyunmAlA',
     ganas: 'ma|ma|ga,ga',
     matras: ['ga', 'ga', 'ga', 'ga', 'ga', 'ga', 'ga', 'ga'],
-    string: 'विद्युन्मालालोलान् भोगान्',
-    syllables: ['वि', 'द्यु', 'न्मा', 'ला', 'लो', 'ला', 'न्भो', 'गान्']
+    string: 'vidyunmAlAlolAn bhogAn',
+    syllables: ['vi', 'dyu', 'nmA', 'lA', 'lo', 'lA', 'nbho', 'gAn']
   },
   {
     chandas: null,
     ganas: 'sa|sa|sa|sa',
     matras: ['la', 'la', 'ga', 'la', 'la', 'ga', 'la', 'la', 'ga', 'la', 'la', 'ga'],
-    string: 'विदिताखिलशास्त्रसुधाजलधे',
-    syllables: [
-      'वि', 'दि', 'ता', 'खि', 'ल', 'शा', 'स्त्र', 'सु', 'धा', 'ज', 'ल', 'धे'
-    ]
+    string: 'viditAkhilashAstrasudhAjaladhe',
+    syllables: ['vi', 'di', 'tA', 'khi', 'la', 'shA', 'stra', 'su', 'dhA', 'ja', 'la', 'dhe']
   },
   {
     chandas: null,
     ganas: 'ya|ya|ya|ya',
     matras: ['la', 'ga', 'ga', 'la', 'ga', 'ga', 'la', 'ga', 'ga', 'la', 'ga', 'ga'],
-    string: 'मुखान्निःसरन्ते गिरश्चापि चित्रम्',
-    syllables: [
-      'मु', 'खा', 'न्निः', 'स', 'र', 'न्ते', 'गि', 'र', 'श्चा', 'पि', 'चि', 'त्रम्'
-    ]
+    string: 'mukhAnniHsarante girashchApi chitram',
+    syllables: ['mu', 'khA', 'nniH', 'sa', 'ra', 'nte', 'gi', 'ra', 'shchA', 'pi', 'chi', 'tram']
   },
   {
     chandas: null,
     ganas: 'ya|ya|ya|ya',
     matras: ['la', 'ga', 'ga', 'la', 'ga', 'ga', 'la', 'ga', 'ga', 'la', 'ga', 'ga'],
-    string: 'न जानामि शब्दं न जानामि चार्थं',
-    syllables: [
-      'न', 'जा', 'ना', 'मि', 'श', 'ब्दं', 'न', 'जा', 'ना', 'मि', 'चा', 'र्थं'
-    ]
+    string: 'na jAnAmi shabdaM na jAnAmi chArthaM',
+    syllables: ['na', 'jA', 'nA', 'mi', 'sha', 'bdaM', 'na', 'jA', 'nA', 'mi', 'chA', 'rthaM']
   }
+
 ];

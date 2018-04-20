@@ -22,15 +22,31 @@ const makeSchemeBranch = (scheme, schemeSubset, tokenLengths) => {
 
   scheme.data[schemeSubset].forEach((akshara, aksharaIndex) => {
 
-    makeSchemeLeaf(
-      akshara,
-      aksharaIndex,
-      schemeBranch,
-      schemeSubset,
-      tokenLengths
-    );
+    if (!Array.isArray(akshara)) {
 
-    return;
+      makeSchemeLeaf(
+        akshara,
+        aksharaIndex,
+        schemeBranch,
+        schemeSubset,
+        tokenLengths
+      );
+
+      return;
+
+    }
+
+    akshara.forEach(alternateAkshara => {
+
+      makeSchemeLeaf(
+        alternateAkshara,
+        aksharaIndex,
+        schemeBranch,
+        schemeSubset,
+        tokenLengths
+      );
+
+    });
 
   });
 
@@ -47,14 +63,9 @@ export const makeSchemeTree = scheme => {
   const schemeTree = Object.assign({},
 
     makeSchemeBranch(scheme, 'deadConsonants', tokenLengths),
-    makeSchemeBranch(scheme, 'consonants', tokenLengths),
     makeSchemeBranch(scheme, 'vowels', tokenLengths),
-    makeSchemeBranch(scheme, 'vowelMarks', tokenLengths),
-    makeSchemeBranch({
-      'data': {
-        'ayogavaha': ['\u0902', '\u0903']
-      }
-    }, 'ayogavaha', tokenLengths)
+    makeSchemeBranch(scheme, 'symbols', tokenLengths),
+    makeSchemeBranch(scheme, 'ayogavaha', tokenLengths)
 
   );
 

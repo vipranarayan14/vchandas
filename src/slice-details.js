@@ -8,6 +8,13 @@ export const getSliceDetails = schemeTree => slice => {
 
     sliceDetails = sliceDetailsInSchemeTree;
 
+  } else if (slice === ' ') {
+
+    sliceDetails = {
+      akshara: slice,
+      type: 'space'
+    };
+
   } else {
 
     sliceDetails = { //TODO: Handle 'unknown' slices in vTokenize
