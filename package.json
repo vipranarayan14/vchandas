@@ -1,6 +1,6 @@
 {
   "name": "vchandas",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "An utility for samskrita prosody.",
   "main": "dist/vchandas.npm.js",
   "files": [

@@ -94,9 +94,9 @@ var _init = __webpack_require__(8);
 
 var _vtokenize = __webpack_require__(10);
 
-var _vtranslitDevaScheme = __webpack_require__(11);
+var _vtranslitItrnScheme = __webpack_require__(11);
 
-var _vtranslitDevaScheme2 = _interopRequireDefault(_vtranslitDevaScheme);
+var _vtranslitItrnScheme2 = _interopRequireDefault(_vtranslitItrnScheme);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -104,7 +104,7 @@ var vChandas = exports.vChandas = function vChandas() {
 
   var chandasList = (0, _init.prepareChandasList)();
 
-  var _makeSchemeTree = (0, _schemeTree.makeSchemeTree)(_vtranslitDevaScheme2.default),
+  var _makeSchemeTree = (0, _schemeTree.makeSchemeTree)(_vtranslitItrnScheme2.default),
       schemeTree = _makeSchemeTree.schemeTree,
       maxTokenLength = _makeSchemeTree.maxTokenLength;
 
@@ -238,7 +238,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 var setMatra = function setMatra(token) {
 
-  var matra = { 'ayogavaha': 2, 'consonants': 1, 'deadConsonants': 0 }[token.type];
+  var matra = { 'ayogavaha': 3, 'deadConsonants': 0, 'symbols': -1 }[token.type];
 
   if (matra !== undefined) {
 
@@ -267,7 +267,23 @@ var setMatras = function setMatras(tokens) {
   return tokensWithMatras;
 };
 
+var getPrevToken = function getPrevToken(tokens, index) {
+  return index > 0 ? tokens[index - 1] : { matra: null, type: 'strStart' };
+};
+
+var getNextToken = function getNextToken(tokens, index) {
+  return index < tokens.length - 1 ? tokens[index + 1] : { matra: null, type: 'strEnd' };
+};
+
+var getMatraInsertIndex = function getMatraInsertIndex(matras) {
+  return matras.length ? matras.length - 1 : 0;
+};
+
 /* eslint-disable complexity */
+
+var isPrevMatraGuru = function isPrevMatraGuru(prevToken, token, nextToken) {
+  return token.matra === 0 && prevToken.type === 'vowels' && (nextToken.matra === 0 || nextToken.type === 'strEnd') || token.matra === 3;
+};
 
 var getMatras = exports.getMatras = function getMatras(tokens) {
 
@@ -280,30 +296,22 @@ var getMatras = exports.getMatras = function getMatras(tokens) {
 
   tokensWithMatras.forEach(function (token, index) {
 
-    var prevToken = index > 0 ? tokensWithMatras[index - 1] : { matra: undefined };
-    var matraInsertIndex = matras.length ? matras.length - 1 : 0;
+    var prevToken = getPrevToken(tokensWithMatras, index);
+    var nextToken = getNextToken(tokensWithMatras, index);
 
-    if (token.matra === 0) {
+    var matraInsertIndex = getMatraInsertIndex(matras);
 
-      if (prevToken.matra === 1) {
+    if (isPrevMatraGuru(prevToken, token, nextToken)) {
 
-        matras[matraInsertIndex] = guru;
-      }
-    } else if (token.matra === 1) {
+      matras[matraInsertIndex] = guru;
+    }
 
-      if (token.type !== 'vowelMarks') {
+    if (token.matra === 1) {
 
-        matras.push(laghu);
-      }
+      matras.push(laghu);
     } else if (token.matra === 2) {
 
-      if (prevToken.matra === 1) {
-
-        matras[matraInsertIndex] = guru;
-      } else {
-
-        matras.push(guru);
-      }
+      matras.push(guru);
     }
   });
 
@@ -330,6 +338,12 @@ var getSliceDetails = exports.getSliceDetails = function getSliceDetails(schemeT
     if (sliceDetailsInSchemeTree) {
 
       sliceDetails = sliceDetailsInSchemeTree;
+    } else if (slice === ' ') {
+
+      sliceDetails = {
+        akshara: slice,
+        type: 'space'
+      };
     } else {
 
       sliceDetails = { //TODO: Handle 'unknown' slices in vTokenize
@@ -361,17 +375,21 @@ var getSyllables = exports.getSyllables = function getSyllables(tokens) {
   tokens.forEach(function (token, index) {
 
     var prevToken = index > 0 ? tokens[index - 1] : { type: 'strStart' };
+    var isLastToken = index === tokens.length - 1;
 
     if (token.type === 'deadConsonants') {
 
-      if (index === tokens.length - 1 || prevToken.type === 'deadConsonants') {
+      if (isLastToken || prevToken.type === 'deadConsonants') {
 
         syllables[syllables.length - 1] += token.akshara;
       } else {
 
         syllables.push(token.akshara);
       }
-    } else if (token.type === 'consonants') {
+    } else if (token.type === 'ayogavaha' && prevToken.type === 'vowels') {
+
+      syllables[syllables.length - 1] += token.akshara;
+    } else if (token.type === 'vowels') {
 
       if (prevToken.type === 'deadConsonants') {
 
@@ -380,15 +398,6 @@ var getSyllables = exports.getSyllables = function getSyllables(tokens) {
 
         syllables.push(token.akshara);
       }
-    } else if (token.type === 'vowelMarks' && prevToken.type === 'consonants') {
-
-      syllables[syllables.length - 1] += token.akshara;
-    } else if (token.type === 'ayogavaha' && (prevToken.type === 'vowelMarks' || prevToken.type === 'consonants')) {
-
-      syllables[syllables.length - 1] += token.akshara;
-    } else if (token.type === 'vowels') {
-
-      syllables.push(token.akshara);
     }
   });
 
@@ -427,9 +436,17 @@ var makeSchemeBranch = function makeSchemeBranch(scheme, schemeSubset, tokenLeng
 
   scheme.data[schemeSubset].forEach(function (akshara, aksharaIndex) {
 
-    makeSchemeLeaf(akshara, aksharaIndex, schemeBranch, schemeSubset, tokenLengths);
+    if (!Array.isArray(akshara)) {
 
-    return;
+      makeSchemeLeaf(akshara, aksharaIndex, schemeBranch, schemeSubset, tokenLengths);
+
+      return;
+    }
+
+    akshara.forEach(function (alternateAkshara) {
+
+      makeSchemeLeaf(alternateAkshara, aksharaIndex, schemeBranch, schemeSubset, tokenLengths);
+    });
   });
 
   return schemeBranch;
@@ -441,11 +458,7 @@ var makeSchemeTree = exports.makeSchemeTree = function makeSchemeTree(scheme) {
 
   var maxTokenLength = 0;
 
-  var schemeTree = Object.assign({}, makeSchemeBranch(scheme, 'deadConsonants', tokenLengths), makeSchemeBranch(scheme, 'consonants', tokenLengths), makeSchemeBranch(scheme, 'vowels', tokenLengths), makeSchemeBranch(scheme, 'vowelMarks', tokenLengths), makeSchemeBranch({
-    'data': {
-      'ayogavaha': ['\u0902', '\u0903']
-    }
-  }, 'ayogavaha', tokenLengths));
+  var schemeTree = Object.assign({}, makeSchemeBranch(scheme, 'deadConsonants', tokenLengths), makeSchemeBranch(scheme, 'vowels', tokenLengths), makeSchemeBranch(scheme, 'symbols', tokenLengths), makeSchemeBranch(scheme, 'ayogavaha', tokenLengths));
 
   maxTokenLength = Math.max.apply(Math, tokenLengths);
 
@@ -872,9 +885,9 @@ var vTokenize = exports.vTokenize = function vTokenize(str, maxTokenLength, getS
 	else if(typeof define === 'function' && define.amd)
 		define([], factory);
 	else if(typeof exports === 'object')
-		exports["vTranslitDevaScheme"] = factory();
+		exports["vTranslitItrnScheme"] = factory();
 	else
-		root["vTranslitDevaScheme"] = factory();
+		root["vTranslitItrnScheme"] = factory();
 })(typeof self !== 'undefined' ? self : this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -951,24 +964,24 @@ return /******/ (function(modules) { // webpackBootstrap
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var vTranslitDevaScheme = exports.vTranslitDevaScheme = {
+var vTranslitItrnScheme = exports.vTranslitItrnScheme = {
   'about': {
-    'schemeCode': 'Deva',
-    'schemeName': 'Devanagari',
-    'type': 'brahmic'
+    'schemeCode': 'Itrn',
+    'schemeName': 'ITRANS',
+    'type': 'roman'
   },
   'data': {
-    'consonants': ['\u0915', '\u0916', '\u0917', '\u0918', '\u0919', '\u091A', '\u091B', '\u091C', '\u091D', '\u091E', '\u091F', '\u0920', '\u0921', '\u0922', '\u0923', '\u0924', '\u0925', '\u0926', '\u0927', '\u0928', '', '\u092A', '\u092B', '\u092C', '\u092D', '\u092E', '\u092F', '\u0930', '', '\u0932', '\u0933', '', '\u0935', '\u0936', '\u0937', '\u0938', '\u0939'],
-    'deadConsonants': ['\u0915\u094D', '\u0916\u094D', '\u0917\u094D', '\u0918\u094D', '\u0919\u094D', '\u091A\u094D', '\u091B\u094D', '\u091C\u094D', '\u091D\u094D', '\u091E\u094D', '\u091F\u094D', '\u0920\u094D', '\u0921\u094D', '\u0922\u094D', '\u0923\u094D', '\u0924\u094D', '\u0925\u094D', '\u0926\u094D', '\u0927\u094D', '\u0928\u094D', '', '\u092A\u094D', '\u092B\u094D', '\u092C\u094D', '\u092D\u094D', '\u092E\u094D', '\u092F\u094D', '\u0930\u094D', '', '\u0932\u094D', '\u0933\u094D', '', '\u0935\u094D', '\u0936\u094D', '\u0937\u094D', '\u0938\u094D', '\u0939\u094D'],
-    'symbols': ['\u0966', '\u0967', '\u0968', '\u0969', '\u096A', '\u096B', '\u096C', '\u096D', '\u096E', '\u096F', '\u0964', '\u0965', '\u0950', '\u093D', '\u0902', '\u0903', '\u0901'],
-    'virama': ['\u094D'],
-    'vowelMarks': ['', '\u093E', '\u093F', '\u0940', '\u0941', '\u0942', '\u0943', '\u0944', '\u0962', '\u0963', '', '\u0947', '\u0948', '', '\u094B', '\u094C'],
-    'vowels': ['\u0905', '\u0906', '\u0907', '\u0908', '\u0909', '\u090A', '\u090B', '\u0960', '\u090C', '\u0961', '\u090F', '', '\u0910', '\u0913', '', '\u0914']
+    'ayogavaha': [['M', '.m'], ['H', '.h']],
+    'consonants': ['ka', 'kha', 'ga', 'gha', ['~Na', 'N^a'], 'cha', 'Cha', 'ja', 'jha', ['~na', 'JNa'], 'Ta', 'Tha', 'Da', 'Dha', 'Na', 'ta', 'tha', 'da', 'dha', 'na', '^na', 'pa', 'pha', 'ba', 'bha', 'ma', 'ya', 'ra', 'Ra', 'la', 'La', 'zha', ['va', 'wa'], 'sha', ['Sha', 'Sa', 'shha'], 'sa', 'ha'],
+    'deadConsonants': ['k', 'kh', 'g', 'gh', ['~N', 'N^'], 'ch', 'Ch', 'j', 'jh', ['~n', 'JN'], 'T', 'Th', 'D', 'Dh', 'N', 't', 'th', 'd', 'dh', 'n', '^n', 'p', 'ph', 'b', 'bh', 'm', 'y', 'r', 'R', 'l', 'L', 'zh', ['v', 'w'], 'sh', ['Sh', 'S', 'shh'], 's', 'h'],
+    'symbols': ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '|', '||', ['OM', 'AUM'], '.a', '.N'],
+    'vowelMarks': ['a', ['A', 'aa'], 'i', ['I', 'ii'], 'u', ['U', 'uu'], ['RRi', 'R^i'], ['RRI', 'R^I'], ['LLi', 'L^i'], ['LLI', 'L^I'], 'e', 'E', 'ai', 'o', 'O', 'au'],
+    'vowels': ['a', ['A', 'aa'], 'i', ['I', 'ii'], 'u', ['U', 'uu'], ['RRi', 'R^i'], ['RRI', 'R^I'], ['LLi', 'L^i'], ['LLI', 'L^I'], 'e', 'E', 'ai', 'o', 'O', 'au']
   }
 };
 
 /***/ })
-/******/ ])["vTranslitDevaScheme"];
+/******/ ])["vTranslitItrnScheme"];
 });
 
 /***/ })
