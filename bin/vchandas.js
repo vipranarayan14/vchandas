@@ -8,7 +8,18 @@
   const options = require('yargs')
     .usage('Usage: $0 -s [string]')
     .options({
-      's': { alias: 'string', describe: 'string to analyze for chandas', type: 'string' },
+      'i': {
+        alias: 'ignore-last-laghu',
+        default: false,
+        describe: 'Ignore Last Laghu in Pāda',
+        type: 'boolean'
+      },
+      's': {
+        alias: 'string',
+        demand: true,
+        describe: 'String to analyze for chandas',
+        type: 'string'
+      },
     })
     .help('h')
     .alias('h', 'help')
@@ -50,13 +61,9 @@
 
     const vc = vChandas();
 
-    const chandasDetails = vc(options.string);
+    const chandasDetails = vc(options.string, options.ignoreLastLaghu);
 
     handleOutput(chandasDetails);
-
-  } else {
-
-    log('A string (-s) as input is required.');
 
   }
 
