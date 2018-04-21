@@ -20,8 +20,8 @@
 
     if (chandasDetails) {
 
-      log(chalk.yellow.bold('Syllables:'), '\n', chandasDetails.syllables.join('/'));
-      log(chalk.yellow.bold('Matras:'), '\n', chandasDetails.matras.join('/'));
+      log(chalk.yellow.bold('Syllables:'), '\n', chandasDetails.syllables.join(','));
+      log(chalk.yellow.bold('Matras:'), '\n', chandasDetails.matras.join(','));
       log(chalk.yellow.bold('Ganas:'), '\n', chandasDetails.ganas);
 
       if (chandasDetails.chandas) {
