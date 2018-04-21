@@ -1,14 +1,4 @@
-const makeGanasKey = ganas =>
-
-  (ganas.ganas.length && ganas.looseMatras) ? (
-    `${ganas.ganas}|${ganas.looseMatras}`
-  ) : (
-    `${ganas.ganas}${ganas.looseMatras}`
-  );
-
-export const getChandas = (ganas, chandasList) => {
-
-  const ganasKey = makeGanasKey(ganas);
+export const getChandas = (ganasKey, chandasList) => {
 
   const chandas = chandasList[ganasKey];
 

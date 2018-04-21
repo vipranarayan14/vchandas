@@ -1,6 +1,6 @@
+import { getGanas, makeGanasKey } from '../../src/ganas';
 import { cleanString } from '../../src/utils';
 import { expect } from 'chai';
-import { getGanas } from '../../src/ganas';
 import { getMatras } from '../../src/matras';
 import { getSliceDetails } from '../../src/slice-details';
 import { makeSchemeTree } from '../../src/scheme-tree';
@@ -19,14 +19,6 @@ const getTokens = str =>
     cleanString(str),
     maxTokenLength,
     getSliceDetails(schemeTree)
-  );
-
-const makeGanasKey = ganas =>
-
-  (ganas.ganas.length && ganas.looseMatras) ? (
-    `${ganas.ganas}|${ganas.looseMatras}`
-  ) : (
-    `${ganas.ganas}${ganas.looseMatras}`
   );
 
 describe('getGanas', () => {

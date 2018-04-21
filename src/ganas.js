@@ -54,3 +54,11 @@ export const getGanas = matras => {
   return { ganas, looseMatras };
 
 };
+
+export const makeGanasKey = ganas =>
+
+  (ganas.ganas.length && ganas.looseMatras) ? (
+    `${ganas.ganas}|${ganas.looseMatras}`
+  ) : (
+    `${ganas.ganas}${ganas.looseMatras}`
+  );

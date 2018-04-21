@@ -1,6 +1,6 @@
+import { getGanas, makeGanasKey } from './ganas';
 import { cleanString } from './utils';
 import { getChandas } from './chandas';
-import { getGanas } from './ganas';
 import { getMatras } from './matras';
 import { getSliceDetails } from './slice-details';
 import { getSyllables } from './syllables';
@@ -32,11 +32,14 @@ export const vChandas = () => {
 
     const ganas = getGanas(matras);
 
-    const chandas = getChandas(ganas, chandasList);
+    const ganasKey = makeGanasKey(ganas);
+
+    const chandas = getChandas(ganasKey, chandasList);
 
     return {
       chandas,
       ganas,
+      ganasKey,
       matras,
       syllables
     };
