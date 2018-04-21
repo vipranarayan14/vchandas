@@ -6,7 +6,7 @@ export const chandasList = [
     caesura: [],
     definition: 'guH',
     examples: [
-      'shrIshaH |' +
+      'shrIshaH | ' +
       'pAyAt ||'
     ],
     ganas: 'ga',
@@ -17,7 +17,7 @@ export const chandasList = [
     caesura: [],
     definition: 'gau strI',
     examples: [
-      'shrImAn viShnuH |' +
+      'shrImAn viShnuH | ' +
       'nityaM dhyeyaH ||'
     ],
     ganas: 'ga,ga',
@@ -28,7 +28,7 @@ export const chandasList = [
     caesura: [],
     definition: 'mO nArI',
     examples: [
-      'nArINAM kalyANI |' +
+      'nArINAM kalyANI | ' +
       'mAM pAyAtsA vANI ||'
     ],
     ganas: 'ma',
@@ -39,7 +39,7 @@ export const chandasList = [
     caesura: [],
     definition: 'rO mRRigIH',
     examples: [
-      'sA mRRigIlOchanI |' +
+      'sA mRRigIlOchanI | ' +
       'rAdhikA shrIpatEH ||'
     ],
     ganas: 'ra',
@@ -50,7 +50,7 @@ export const chandasList = [
     caesura: [],
     definition: 'mgau cetkanyA',
     examples: [
-      'bhAsvatkanyA saikA dhanyA |' +
+      'bhAsvatkanyA saikA dhanyA | ' +
       'yasyAH kUlE kRRiShNO.akhElat ||'
     ],
     ganas: 'ma|ga',
@@ -61,7 +61,7 @@ export const chandasList = [
     caesura: [],
     definition: 'bhgau giti pa~NktiH',
     examples: [
-      'bhAsvatkanyA saikA dhanyA |' +
+      'bhAsvatkanyA saikA dhanyA | ' +
       'yasyAH kUlE kRRiShNO.akhElat ||'
     ],
     ganas: 'ma|ga,ga',
@@ -72,9 +72,9 @@ export const chandasList = [
     caesura: [],
     definition: 'tyau stastanumadhyA',
     examples: [
-      'mUrtirmurashatrOratyadbhutarUpA |' +
+      'mUrtirmurashatrOratyadbhutarUpA | ' +
       'AstAM mama cittE nityaM tanumadhyA ||',
-      'nashyanti dadarsha vRRindAni kapIndraH |' +
+      'nashyanti dadarsha vRRindAni kapIndraH | ' +
       'hArINyabalAnAM hArINyabalAnAm ||'
     ],
     ganas: 'ma|ga',
@@ -85,7 +85,7 @@ export const chandasList = [
     caesura: [],
     definition: 'shashivadanA nyau',
     examples: [
-      'shashivadanAnAM vrajataruNInAm |' +
+      'shashivadanAnAM vrajataruNInAm | ' +
       'dadhighaTabhedaM madhuripuraichchhat ||'
     ],
     ganas: 'na|ya',
@@ -96,7 +96,7 @@ export const chandasList = [
     caesura: [],
     definition: 'vidyullEkhA mO maH',
     examples: [
-      'varShAkAlE kAlE mEghAchchhannAkAshE |' +
+      'varShAkAlE kAlE mEghAchchhannAkAshE | ' +
       'vidyullEkhA bhAntyAH sarvairAlOkhyantE ||'
     ],
     ganas: 'ma|ma',
@@ -107,7 +107,7 @@ export const chandasList = [
     caesura: [],
     definition: 'tsau chedvasumatI',
     examples: [
-      'sAstE vasumatI yAstE vasumatI |' +
+      'sAstE vasumatI yAstE vasumatI | ' +
       'puNyAkaravatI puNyAkarabhavA ||'
     ],
     ganas: 'ta|sa',
@@ -118,7 +118,7 @@ export const chandasList = [
     caesura: [],
     definition: 'msau gaH syAnmadalEkhA',
     examples: [
-      'ra~NgE bAhuvirugNAt dantIndrAnmadalEkhA |' +
+      'ra~NgE bAhuvirugNAt dantIndrAnmadalEkhA | ' +
       'lagnAbhUtmurashatrau kastUrIrasacharchA ||'
     ],
     ganas: 'ma,sa|ga',
@@ -129,7 +129,7 @@ export const chandasList = [
     caesura: [],
     definition: 'kumAralalitA jsau g',
     examples: [
-      'murAritanuvallI kumAralalitA sA |' +
+      'murAritanuvallI kumAralalitA sA | ' +
       'vrajaiNanayanAnAM tatAna mudamuchchaiH ||'
     ],
     ganas: 'ja,sa|ga',
@@ -140,7 +140,7 @@ export const chandasList = [
     caesura: [],
     definition: 'saragai haMsamAlA',
     examples: [
-      'dhavalA haMsamAlA sukhapUrvaM vishAlA |' +
+      'dhavalA haMsamAlA sukhapUrvaM vishAlA | ' +
       'vimalAmbhastaDAkE bhayahInA nidadrau ||'
     ],
     ganas: 'sa,ra|ga',
@@ -151,7 +151,7 @@ export const chandasList = [
     caesura: [],
     definition: 'bhau giti citrapadA gaH',
     examples: [
-      'yAmunasaikatadEshE gOpavadhUjalakElau |' +
+      'yAmunasaikatadEshE gOpavadhUjalakElau | ' +
       'kaMsaripOrgalIlA chitrapadA jagadavyAt ||'
     ],
     ganas: 'bha,bha|ga,ga',
@@ -162,7 +162,7 @@ export const chandasList = [
     caesura: [4, 4],
     definition: 'mO mO gO gO vidyunmAlA',
     examples: [
-      'vidyunmAlAlOlAn bhOgAn muktvA muktau yatnaM kuryAt |' +
+      'vidyunmAlAlOlAn bhOgAn muktvA muktau yatnaM kuryAt | ' +
       'dhyAnOtpannaM niHsAmAnyaM saukhyaM bhOktum yadyAkA~NkShEt ||'
     ],
     ganas: 'ma,ma|ga,ga',
@@ -173,7 +173,7 @@ export const chandasList = [
     caesura: [4, 4],
     definition: 'mANavakam bhAttalagAH',
     examples: [
-      'mANavakakrIditakaM yaH kurutE vRRiddhavayAH |' +
+      'mANavakakrIditakaM yaH kurutE vRRiddhavayAH | ' +
       'hAsyamasau yAti janE bhikShuriva strIchapalaH ||'
     ],
     ganas: 'bha,ta|la,ga',
@@ -184,7 +184,7 @@ export const chandasList = [
     caesura: [],
     definition: 'mnau gau haMsarutamEtat',
     examples: [
-      'abhyAgAmishashilakShmIma~njIrakvaNitatulyam |' +
+      'abhyAgAmishashilakShmIma~njIrakvaNitatulyam | ' +
       'tIrE rajati nadInAM ramyaM haMsarutamEtat ||'
     ],
     ganas: 'ma,na|ga,ga',
@@ -195,7 +195,7 @@ export const chandasList = [
     caesura: [],
     definition: 'rjau samAnikA galau cha',
     examples: [
-      'yasya kRRiShNapAdapadmamasti hRRittaDAgasadma |' +
+      'yasya kRRiShNapAdapadmamasti hRRittaDAgasadma | ' +
       'dhIH samAnikA parENa nocitA.atra matsarENa ||'
     ],
     ganas: 'ra,ja|ga,la',
@@ -206,7 +206,7 @@ export const chandasList = [
     caesura: [],
     definition: 'pramANikA jarau lagau',
     examples: [
-      'punAtu bhaktirachyutA sadAchyutA~NghripadmayOH |' +
+      'punAtu bhaktirachyutA sadAchyutA~NghripadmayOH | ' +
       'shrutismRRitipramANikA bhavAmburAshitArikA ||'
     ],
     ganas: 'ja,ra|la,ga',
@@ -217,7 +217,7 @@ export const chandasList = [
     caesura: [3, 6],
     definition: 'rAnnasAviha halamukhI',
     examples: [
-      'gaNDayOratishayakRRishaM yanmukham prakaTadarshanaM |' +
+      'gaNDayOratishayakRRishaM yanmukham prakaTadarshanaM | ' +
       'AyataM kalahanirataM tAM striyaM tyaja halamukhIm ||'
     ],
     ganas: 'ra,na,sa',
@@ -228,7 +228,7 @@ export const chandasList = [
     caesura: [7, 2],
     definition: 'bhujagashashibhRRitA nau maH',
     examples: [
-      'hradataTanikaTakShONI bhujagashashibhRRitA yAsIt |' +
+      'hradataTanikaTakShONI bhujagashashibhRRitA yAsIt | ' +
       'muraripudalitE nAgE vrajajanasukhadA sAbhUt ||'
     ],
     ganas: 'na,na,ma',
@@ -239,7 +239,7 @@ export const chandasList = [
     caesura: [],
     definition: 'msau jgau shuddhavirADidaM matam',
     examples: [
-      'vishvaM tiShTati kukShikOtarE vaktrE yasya sarasvatI sadA |' +
+      'vishvaM tiShTati kukShikOtarE vaktrE yasya sarasvatI sadA | ' +
       'asmadvaMshapitAmahO gururbrahmA shuddhavirAD punAtu naH ||'
     ],
     ganas: 'ma,sa,ja|ga',
@@ -250,7 +250,7 @@ export const chandasList = [
     caesura: [5, 5],
     definition: 'mnau ygau cEti paNavanAmEdam',
     examples: [
-      'mImAMsArasamamRRitaM pItvA shAstrOktiH paTuritarA bhAti |' +
+      'mImAMsArasamamRRitaM pItvA shAstrOktiH paTuritarA bhAti | ' +
       'EvaM saMsadi viduShAM jalpAmO jayapaNabandhanAt ||'
     ],
     ganas: 'ma,na,ya|ga',
@@ -261,7 +261,7 @@ export const chandasList = [
     caesura: [],
     definition: 'rjau ragau mayUrasAriNI syAt',
     examples: [
-      'yA vanAntarANyupaiti rantuM yA bhuja~NgabhOgamuktacittA |' +
+      'yA vanAntarANyupaiti rantuM yA bhuja~NgabhOgamuktacittA | ' +
       'yA drutaM prayAti sannatAMsA tAM mayUrasAriNIM vijahyAt ||'
     ],
     ganas: 'ra,ja,ra|ga',
@@ -272,7 +272,7 @@ export const chandasList = [
     caesura: [5, 5],
     definition: 'bhmau sagayuktau rukmavatIyam',
     examples: [
-      'pAdatalE padmOdaragaurE rAjati yasyA UrdhvarEkhA |' +
+      'pAdatalE padmOdaragaurE rAjati yasyA UrdhvarEkhA | ' +
       'sA bhavati strIlakShaNayuktA rukmavatI saubhAgyavatI ca ||'
     ],
     ganas: 'bha,ma,sa|ga',
@@ -283,7 +283,7 @@ export const chandasList = [
     caesura: [4, 6],
     definition: 'j~nEyA mattA mabhasagayuktA',
     examples: [
-      'pItvA mattA madhu madhupAlI kAlindIyE taTavanaku~njE |' +
+      'pItvA mattA madhu madhupAlI kAlindIyE taTavanaku~njE | ' +
       'uddIvyantI vrajajanarAmAH prEmAviShTA madhujiti chakrE ||'
     ],
     ganas: 'ma,bha,sa|ga',
@@ -294,7 +294,7 @@ export const chandasList = [
     caesura: [],
     definition: 'narajagairbhavEnmanOramA',
     examples: [
-      'taraNijAtaTE vihAriNI vrajavilAsinIvilAsataH |' +
+      'taraNijAtaTE vihAriNI vrajavilAsinIvilAsataH | ' +
       'muraripOstanuH punAtu vaH sukRRitashAlinAM manOramAH ||'
     ],
     ganas: 'na,ra,ja|ga',
@@ -305,7 +305,7 @@ export const chandasList = [
     caesura: [2, 8],
     definition: 'tjau jau guruNEyamupasthitA',
     examples: [
-      'EShA jagadEkamanOharA kanyA kanakOjjvaladIdhitiH |' +
+      'EShA jagadEkamanOharA kanyA kanakOjjvaladIdhitiH | ' +
       'lakShmIriva dAnavasUdanaM puNyairnaranAthamupasthitA ||'
     ],
     ganas: 'ta,ja,ja|ga',
@@ -316,7 +316,7 @@ export const chandasList = [
     caesura: [],
     definition: 'guH',
     examples: [
-      'shrIshaH |' +
+      'shrIshaH | ' +
       'pAyAt ||'
     ],
     name: 'shrIH',
