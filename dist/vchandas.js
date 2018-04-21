@@ -204,13 +204,19 @@ var makeMatraGroups = function makeMatraGroups(matras) {
   return matraGroups;
 };
 
+var getRadicalMatras = function getRadicalMatras(index, matraGroup) {
+  return index > 0 ? '|' + matraGroup : matraGroup;
+};
+
 var getGanas = exports.getGanas = function getGanas(matras) {
 
   var ganas = [];
 
+  var radicalMatras = '';
+
   var matraGroups = makeMatraGroups(matras);
 
-  matraGroups.forEach(function (matraGroup) {
+  matraGroups.forEach(function (matraGroup, index) {
 
     var gana = ganasList[matraGroup];
 
@@ -219,11 +225,11 @@ var getGanas = exports.getGanas = function getGanas(matras) {
       ganas.push(gana);
     } else {
 
-      ganas.push(matraGroup);
+      radicalMatras = getRadicalMatras(index, matraGroup);
     }
   });
 
-  return ganas.join('|');
+  return ganas.join(',') + radicalMatras;
 };
 
 /***/ }),
@@ -238,16 +244,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 var setMatra = function setMatra(token) {
 
-  var matra = { 'ayogavaha': 3, 'deadConsonants': 0, 'symbols': -1 }[token.type];
+  var matra = {
+    ayogavaha: 3,
+    deadConsonants: 0,
+    symbols: -1,
+    vowels: 2
+  }[token.type];
 
-  if (matra !== undefined) {
+  var shortVowels = ['a', 'i', 'u', 'RRi', 'LLi'];
 
-    return Object.assign({}, token, { matra: matra });
+  if (token.type === 'vowels' && shortVowels.includes(token.akshara)) {
+
+    matra = 1;
   }
-
-  var shortVowelIndexes = { LLi: 8, RRi: 6, a: 0, i: 2, u: 4 };
-
-  matra = Object.values(shortVowelIndexes).includes(token.aksharaIndex) ? 1 : 2;
 
   return Object.assign({}, token, { matra: matra });
 };
@@ -582,126 +591,126 @@ var chandasList = exports.chandasList = [{
   caesura: [],
   definition: 'msau gaH syAnmadalEkhA',
   examples: ['ra~NgE bAhuvirugNAt dantIndrAnmadalEkhA |' + 'lagnAbhUtmurashatrau kastUrIrasacharchA ||'],
-  ganas: 'ma|sa|ga',
+  ganas: 'ma,sa|ga',
   name: 'madalEkhA',
   type: 'uShNik'
 }, {
   caesura: [],
   definition: 'kumAralalitA jsau g',
   examples: ['murAritanuvallI kumAralalitA sA |' + 'vrajaiNanayanAnAM tatAna mudamuchchaiH ||'],
-  ganas: 'ja|sa|ga',
+  ganas: 'ja,sa|ga',
   name: 'kumAralalitA',
   type: 'uShNik'
 }, {
   caesura: [],
   definition: 'saragai haMsamAlA',
   examples: ['dhavalA haMsamAlA sukhapUrvaM vishAlA |' + 'vimalAmbhastaDAkE bhayahInA nidadrau ||'],
-  ganas: 'sa|ra|ga',
+  ganas: 'sa,ra|ga',
   name: 'haMsamAlA',
   type: 'uShNik'
 }, {
   caesura: [],
   definition: 'bhau giti citrapadA gaH',
   examples: ['yAmunasaikatadEshE gOpavadhUjalakElau |' + 'kaMsaripOrgalIlA chitrapadA jagadavyAt ||'],
-  ganas: 'bha|bha|ga,ga',
+  ganas: 'bha,bha|ga,ga',
   name: 'chitrapadA',
   type: 'anuShTup'
 }, {
   caesura: [4, 4],
   definition: 'mO mO gO gO vidyunmAlA',
   examples: ['vidyunmAlAlOlAn bhOgAn muktvA muktau yatnaM kuryAt |' + 'dhyAnOtpannaM niHsAmAnyaM saukhyaM bhOktum yadyAkA~NkShEt ||'],
-  ganas: 'ma|ma|ga,ga',
+  ganas: 'ma,ma|ga,ga',
   name: 'vidyunmAlA',
   type: 'anuShTup'
 }, {
   caesura: [4, 4],
   definition: 'mANavakam bhAttalagAH',
   examples: ['mANavakakrIditakaM yaH kurutE vRRiddhavayAH |' + 'hAsyamasau yAti janE bhikShuriva strIchapalaH ||'],
-  ganas: 'bha|ta|la,ga',
+  ganas: 'bha,ta|la,ga',
   name: 'mANavakam',
   type: 'anuShTup'
 }, {
   caesura: [],
   definition: 'mnau gau haMsarutamEtat',
   examples: ['abhyAgAmishashilakShmIma~njIrakvaNitatulyam |' + 'tIrE rajati nadInAM ramyaM haMsarutamEtat ||'],
-  ganas: 'ma|na|ga,ga',
+  ganas: 'ma,na|ga,ga',
   name: 'haMsarutam',
   type: 'anuShTup'
 }, {
   caesura: [],
   definition: 'rjau samAnikA galau cha',
   examples: ['yasya kRRiShNapAdapadmamasti hRRittaDAgasadma |' + 'dhIH samAnikA parENa nocitA.atra matsarENa ||'],
-  ganas: 'ra|ja|ga,la',
+  ganas: 'ra,ja|ga,la',
   name: 'samAnikA',
   type: 'anuShTup'
 }, {
   caesura: [],
   definition: 'pramANikA jarau lagau',
   examples: ['punAtu bhaktirachyutA sadAchyutA~NghripadmayOH |' + 'shrutismRRitipramANikA bhavAmburAshitArikA ||'],
-  ganas: 'ja|ra|la,ga',
+  ganas: 'ja,ra|la,ga',
   name: 'pramANikA',
   type: 'anuShTup'
 }, {
   caesura: [3, 6],
   definition: 'rAnnasAviha halamukhI',
   examples: ['gaNDayOratishayakRRishaM yanmukham prakaTadarshanaM |' + 'AyataM kalahanirataM tAM striyaM tyaja halamukhIm ||'],
-  ganas: 'ra|na|sa',
+  ganas: 'ra,na,sa',
   name: 'halamukhI',
   type: 'bRRihatI'
 }, {
   caesura: [7, 2],
   definition: 'bhujagashashibhRRitA nau maH',
   examples: ['hradataTanikaTakShONI bhujagashashibhRRitA yAsIt |' + 'muraripudalitE nAgE vrajajanasukhadA sAbhUt ||'],
-  ganas: 'na|na|ma',
+  ganas: 'na,na,ma',
   name: 'bhujagashashibhRRitA',
   type: 'bRRihatI'
 }, {
   caesura: [],
   definition: 'msau jgau shuddhavirADidaM matam',
   examples: ['vishvaM tiShTati kukShikOtarE vaktrE yasya sarasvatI sadA |' + 'asmadvaMshapitAmahO gururbrahmA shuddhavirAD punAtu naH ||'],
-  ganas: 'ma|sa|ja|ga',
+  ganas: 'ma,sa,ja|ga',
   name: 'shuddhavirAD',
   type: 'pa~Nkti'
 }, {
   caesura: [5, 5],
   definition: 'mnau ygau cEti paNavanAmEdam',
   examples: ['mImAMsArasamamRRitaM pItvA shAstrOktiH paTuritarA bhAti |' + 'EvaM saMsadi viduShAM jalpAmO jayapaNabandhanAt ||'],
-  ganas: 'ma|na|ya|ga',
+  ganas: 'ma,na,ya|ga',
   name: 'paNavaH',
   type: 'pa~Nkti'
 }, {
   caesura: [],
   definition: 'rjau ragau mayUrasAriNI syAt',
   examples: ['yA vanAntarANyupaiti rantuM yA bhuja~NgabhOgamuktacittA |' + 'yA drutaM prayAti sannatAMsA tAM mayUrasAriNIM vijahyAt ||'],
-  ganas: 'ra|ja|ra|ga',
+  ganas: 'ra,ja,ra|ga',
   name: 'mayUrasAriNI',
   type: 'pa~Nkti'
 }, {
   caesura: [5, 5],
   definition: 'bhmau sagayuktau rukmavatIyam',
   examples: ['pAdatalE padmOdaragaurE rAjati yasyA UrdhvarEkhA |' + 'sA bhavati strIlakShaNayuktA rukmavatI saubhAgyavatI ca ||'],
-  ganas: 'bha|ma|sa|ga',
+  ganas: 'bha,ma,sa|ga',
   name: 'rukmavatI',
   type: 'pa~Nkti'
 }, {
   caesura: [4, 6],
   definition: 'j~nEyA mattA mabhasagayuktA',
   examples: ['pItvA mattA madhu madhupAlI kAlindIyE taTavanaku~njE |' + 'uddIvyantI vrajajanarAmAH prEmAviShTA madhujiti chakrE ||'],
-  ganas: 'ma|bha|sa|ga',
+  ganas: 'ma,bha,sa|ga',
   name: 'mattA',
   type: 'pa~Nkti'
 }, {
   caesura: [],
   definition: 'narajagairbhavEnmanOramA',
   examples: ['taraNijAtaTE vihAriNI vrajavilAsinIvilAsataH |' + 'muraripOstanuH punAtu vaH sukRRitashAlinAM manOramAH ||'],
-  ganas: 'na|ra|ja|ga',
+  ganas: 'na,ra,ja|ga',
   name: 'manOramA',
   type: 'pa~Nkti'
 }, {
   caesura: [2, 8],
   definition: 'tjau jau guruNEyamupasthitA',
   examples: ['EShA jagadEkamanOharA kanyA kanakOjjvaladIdhitiH |' + 'lakShmIriva dAnavasUdanaM puNyairnaranAthamupasthitA ||'],
-  ganas: 'ta|ja|ja|ga',
+  ganas: 'ta,ja,ja|ga',
   name: 'upasthitA',
   type: 'pa~Nkti'
 }, {
