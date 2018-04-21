@@ -306,7 +306,7 @@ var isPrevMatraGuru = function isPrevMatraGuru(prevToken, token, nextToken) {
   return token.matra === 0 && prevToken.type === 'vowels' && (nextToken.matra === 0 || nextToken.type === 'strEnd') || token.matra === 3;
 };
 
-var getMatras = exports.getMatras = function getMatras(tokens) {
+var getMatras = exports.getMatras = function getMatras(tokens, ignoreLastLaghu) {
 
   var laghu = 'la';
   var guru = 'ga';
@@ -314,6 +314,11 @@ var getMatras = exports.getMatras = function getMatras(tokens) {
   var matras = [];
 
   var tokensWithMatras = setMatras(tokens);
+
+  if (ignoreLastLaghu) {
+
+    tokensWithMatras[tokensWithMatras.length - 1].matra = 2;
+  }
 
   tokensWithMatras.forEach(function (token, index) {
 
