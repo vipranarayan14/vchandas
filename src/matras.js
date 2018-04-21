@@ -62,7 +62,7 @@ const isPrevMatraGuru = (prevToken, token, nextToken) =>
     )
   ) || token.matra === 3;
 
-export const getMatras = tokens => {
+export const getMatras = (tokens, ignoreLastLaghu) => {
 
   const laghu = 'la';
   const guru = 'ga';
@@ -70,6 +70,12 @@ export const getMatras = tokens => {
   const matras = [];
 
   const tokensWithMatras = setMatras(tokens);
+
+  if (ignoreLastLaghu) {
+
+    tokensWithMatras[tokensWithMatras.length - 1].matra = 2;
+
+  }
 
   tokensWithMatras.forEach((token, index) => {
 
