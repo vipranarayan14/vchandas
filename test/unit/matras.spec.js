@@ -26,7 +26,11 @@ describe('getMatras', () => {
 
     it(`should return matras for '${testString.string}' as '[${testString.matras.join(',')}]'`, () => {
 
-      expect(getMatras(getTokens(testString.string))).to.deep.equal(testString.matras);
+      expect(
+        getMatras(
+          getTokens(testString.string)
+        )
+      ).to.deep.equal(testString.matras);
 
     });
 

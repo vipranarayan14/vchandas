@@ -26,7 +26,11 @@ describe('getSyllables', () => {
 
     it(`should return syllables for '${testString.string}' as ${testString.syllables}`, () => {
 
-      expect(getSyllables(getTokens(testString.string))).to.deep.equal(testString.syllables);
+      expect(
+        getSyllables(
+          getTokens(testString.string)
+        )
+      ).to.deep.equal(testString.syllables);
 
     });
 
