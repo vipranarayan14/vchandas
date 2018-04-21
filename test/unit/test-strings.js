@@ -86,28 +86,28 @@ export const testStrings = [
   },
   {
     chandas: 'vidyunmAlA',
-    ganas: 'ma|ma|ga,ga',
+    ganas: 'ma,ma|ga,ga',
     matras: ['ga', 'ga', 'ga', 'ga', 'ga', 'ga', 'ga', 'ga'],
     string: 'vidyunmAlAlolAn bhogAn',
     syllables: ['vi', 'dyu', 'nmA', 'lA', 'lo', 'lA', 'nbho', 'gAn']
   },
   {
     chandas: null,
-    ganas: 'sa|sa|sa|sa',
+    ganas: 'sa,sa,sa,sa',
     matras: ['la', 'la', 'ga', 'la', 'la', 'ga', 'la', 'la', 'ga', 'la', 'la', 'ga'],
     string: 'viditAkhilashAstrasudhAjaladhe',
     syllables: ['vi', 'di', 'tA', 'khi', 'la', 'shA', 'stra', 'su', 'dhA', 'ja', 'la', 'dhe']
   },
   {
     chandas: null,
-    ganas: 'ya|ya|ya|ya',
+    ganas: 'ya,ya,ya,ya',
     matras: ['la', 'ga', 'ga', 'la', 'ga', 'ga', 'la', 'ga', 'ga', 'la', 'ga', 'ga'],
     string: 'mukhAnniHsarante girashchApi chitram',
     syllables: ['mu', 'khA', 'nniH', 'sa', 'ra', 'nte', 'gi', 'ra', 'shchA', 'pi', 'chi', 'tram']
   },
   {
     chandas: null,
-    ganas: 'ya|ya|ya|ya',
+    ganas: 'ya,ya,ya,ya',
     matras: ['la', 'ga', 'ga', 'la', 'ga', 'ga', 'la', 'ga', 'ga', 'la', 'ga', 'ga'],
     string: 'na jAnAmi shabdaM na jAnAmi chArthaM',
     syllables: ['na', 'jA', 'nA', 'mi', 'sha', 'bdaM', 'na', 'jA', 'nA', 'mi', 'chA', 'rthaM']

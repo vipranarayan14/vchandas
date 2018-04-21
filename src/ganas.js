@@ -27,13 +27,19 @@ const makeMatraGroups = matras => {
 
 };
 
+const getRadicalMatras = (index, matraGroup) =>
+
+  (index > 0) ? `|${matraGroup}` : matraGroup;
+
 export const getGanas = matras => {
 
   const ganas = [];
 
+  let radicalMatras = '';
+
   const matraGroups = makeMatraGroups(matras);
 
-  matraGroups.forEach(matraGroup => {
+  matraGroups.forEach((matraGroup, index) => {
 
     const gana = ganasList[matraGroup];
 
@@ -43,12 +49,12 @@ export const getGanas = matras => {
 
     } else {
 
-      ganas.push(matraGroup);
+      radicalMatras = getRadicalMatras(index, matraGroup);
 
     }
 
   });
 
-  return ganas.join('|');
+  return ganas.join(',') + radicalMatras;
 
 };
