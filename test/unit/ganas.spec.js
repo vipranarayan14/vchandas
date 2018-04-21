@@ -21,13 +21,29 @@ const getTokens = str =>
     getSliceDetails(schemeTree)
   );
 
+const makeGanasKey = ganas =>
+
+  (ganas.ganas.length && ganas.looseMatras) ? (
+    `${ganas.ganas}|${ganas.looseMatras}`
+  ) : (
+    `${ganas.ganas}${ganas.looseMatras}`
+  );
+
 describe('getGanas', () => {
 
   testStrings.forEach(testString => {
 
     it(`should return ganas for '${testString.string}' as '${testString.ganas}'`, () => {
 
-      expect(getGanas(getMatras(getTokens(testString.string)))).to.equal(testString.ganas);
+      expect(
+        makeGanasKey(
+          getGanas(
+            getMatras(
+              getTokens(testString.string)
+            )
+          )
+        )
+      ).to.equal(testString.ganasKey);
 
     });
 
