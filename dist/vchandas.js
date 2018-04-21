@@ -76,11 +76,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.vChandas = undefined;
 
-var _utils = __webpack_require__(1);
+var _ganas = __webpack_require__(1);
 
-var _chandas = __webpack_require__(2);
+var _utils = __webpack_require__(2);
 
-var _ganas = __webpack_require__(3);
+var _chandas = __webpack_require__(3);
 
 var _matras = __webpack_require__(4);
 
@@ -120,11 +120,14 @@ var vChandas = exports.vChandas = function vChandas() {
 
     var ganas = (0, _ganas.getGanas)(matras);
 
-    var chandas = (0, _chandas.getChandas)(ganas, chandasList);
+    var ganasKey = (0, _ganas.makeGanasKey)(ganas);
+
+    var chandas = (0, _chandas.getChandas)(ganasKey, chandasList);
 
     return {
       chandas: chandas,
       ganas: ganas,
+      ganasKey: ganasKey,
       matras: matras,
       syllables: syllables
     };
@@ -133,42 +136,6 @@ var vChandas = exports.vChandas = function vChandas() {
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var cleanString = exports.cleanString = function cleanString(str) {
-  return str.slice(0).trim().replace(/\s/g, '');
-};
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var getChandas = exports.getChandas = function getChandas(ganas, chandasList) {
-
-  var chandas = chandasList[ganas];
-
-  if (chandas) {
-
-    return chandas;
-  }
-
-  return null;
-};
-
-/***/ }),
-/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -204,19 +171,15 @@ var makeMatraGroups = function makeMatraGroups(matras) {
   return matraGroups;
 };
 
-var getRadicalMatras = function getRadicalMatras(index, matraGroup) {
-  return index > 0 ? '|' + matraGroup : matraGroup;
-};
-
 var getGanas = exports.getGanas = function getGanas(matras) {
 
   var ganas = [];
 
-  var radicalMatras = '';
+  var looseMatras = '';
 
   var matraGroups = makeMatraGroups(matras);
 
-  matraGroups.forEach(function (matraGroup, index) {
+  matraGroups.forEach(function (matraGroup) {
 
     var gana = ganasList[matraGroup];
 
@@ -225,11 +188,51 @@ var getGanas = exports.getGanas = function getGanas(matras) {
       ganas.push(gana);
     } else {
 
-      radicalMatras = getRadicalMatras(index, matraGroup);
+      looseMatras = matraGroup;
     }
   });
 
-  return ganas.join(',') + radicalMatras;
+  return { ganas: ganas, looseMatras: looseMatras };
+};
+
+var makeGanasKey = exports.makeGanasKey = function makeGanasKey(ganas) {
+  return ganas.ganas.length && ganas.looseMatras ? ganas.ganas + '|' + ganas.looseMatras : '' + ganas.ganas + ganas.looseMatras;
+};
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var cleanString = exports.cleanString = function cleanString(str) {
+  return str.slice(0).trim().replace(/\s/g, '');
+};
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var getChandas = exports.getChandas = function getChandas(ganasKey, chandasList) {
+
+  var chandas = chandasList[ganasKey];
+
+  if (chandas) {
+
+    return chandas;
+  }
+
+  return null;
 };
 
 /***/ }),
