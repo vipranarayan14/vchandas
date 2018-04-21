@@ -1,16 +1,19 @@
 const setMatra = token => {
 
-  let matra = { 'ayogavaha': 3, 'deadConsonants': 0, 'symbols': -1 }[token.type];
+  let matra = {
+    ayogavaha: 3,
+    deadConsonants: 0,
+    symbols: -1,
+    vowels: 2
+  }[token.type];
 
-  if (matra !== undefined) {
+  const shortVowels = ['a', 'i', 'u', 'RRi', 'LLi'];
 
-    return Object.assign({}, token, { matra });
+  if (token.type === 'vowels' && shortVowels.includes(token.akshara)) {
+
+    matra = 1;
 
   }
-
-  const shortVowelIndexes = { LLi: 8, RRi: 6, a: 0, i: 2, u: 4 };
-
-  matra = (Object.values(shortVowelIndexes).includes(token.aksharaIndex)) ? 1 : 2;
 
   return Object.assign({}, token, { matra });
 
