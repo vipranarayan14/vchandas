@@ -6,7 +6,7 @@
   const chalk = require('chalk');
 
   const options = require('yargs')
-    .usage('Usage: $0 -f [scheme] -t [scheme] -s [string] -i [file] -o [output]')
+    .usage('Usage: $0 -s [string]')
     .options({
       's': { alias: 'string', describe: 'string to analyze for chandas', type: 'string' },
     })
