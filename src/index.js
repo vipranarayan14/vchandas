@@ -40,8 +40,8 @@ export const vChandas = () => {
       chandas,
       ganas,
       ganasKey,
-      matras,
-      syllables
+      matras: matras.join(','),
+      syllables: syllables.join(',')
     };
 
   };

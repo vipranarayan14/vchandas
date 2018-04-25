@@ -51,7 +51,7 @@ export const getGanas = matras => {
 
   });
 
-  return { ganas, looseMatras };
+  return { ganas: ganas.join(','), looseMatras };
 
 };
 
