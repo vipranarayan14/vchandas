@@ -85,6 +85,13 @@ export const testStrings = [
     syllables: ['pa', 'Tha', 'nli', 'kha', 'ti']
   },
   {
+    chandas: null,
+    ganasKey: 'bha,ma',
+    matras: ['ga', 'la', 'la', 'ga', 'ga', 'ga'],
+    string: 'prEma umAsha~Nkar',
+    syllables: ['prE', 'ma', 'u', 'mA', 'sha', '~Nkar']
+  },
+  {
     chandas: 'vidyunmAlA',
     ganasKey: 'ma,ma|ga,ga',
     matras: ['ga', 'ga', 'ga', 'ga', 'ga', 'ga', 'ga', 'ga'],
