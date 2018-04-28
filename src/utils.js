@@ -1,3 +1,3 @@
 export const cleanString = str =>
 
-  str.slice(0).trim().replace(/\s/g, '');
+  str.slice(0).trim().replace(/\s\s+/g, ' ');
