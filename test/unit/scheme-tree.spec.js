@@ -1,11 +1,11 @@
 import { expect } from 'chai';
 import { makeSchemeTree } from '../../src/scheme-tree';
-import vTranslitItrnScheme from 'vtranslit-itrn-scheme';
+import { vTranslitSchemeItrn } from 'vtranslit-scheme-itrn';
 
 const {
   schemeTree,
   maxTokenLength
-} = makeSchemeTree(vTranslitItrnScheme);
+} = makeSchemeTree(vTranslitSchemeItrn);
 
 describe('schemeTree for vTokenize', () => {
 

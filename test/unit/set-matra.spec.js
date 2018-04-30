@@ -1,9 +1,9 @@
 import { expect } from 'chai';
 import { makeSchemeTree } from '../../src/scheme-tree';
 import rewire from 'rewire';
-import vTranslitItrnScheme from 'vtranslit-itrn-scheme';
+import { vTranslitSchemeItrn } from 'vtranslit-scheme-itrn';
 
-const { schemeTree } = makeSchemeTree(vTranslitItrnScheme);
+const { schemeTree } = makeSchemeTree(vTranslitSchemeItrn);
 
 // for testing a private module
 const matras = rewire('../../src/matras');

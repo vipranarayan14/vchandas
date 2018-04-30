@@ -5,12 +5,12 @@ import { getSyllables } from '../../src/syllables';
 import { makeSchemeTree } from '../../src/scheme-tree';
 import { testStrings } from './test-strings';
 import { vTokenize } from 'vtokenize';
-import vTranslitItrnScheme from 'vtranslit-itrn-scheme';
+import { vTranslitSchemeItrn } from 'vtranslit-scheme-itrn';
 
 const {
   schemeTree,
   maxTokenLength
-} = makeSchemeTree(vTranslitItrnScheme);
+} = makeSchemeTree(vTranslitSchemeItrn);
 
 const getTokens = str =>
 
