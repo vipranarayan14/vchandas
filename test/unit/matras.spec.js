@@ -1,4 +1,4 @@
-import { cleanString } from '../../src/utils';
+import { cleanString, removeSpaces } from '../../src/utils';
 import { expect } from 'chai';
 import { getMatras } from '../../src/matras';
 import { getSliceDetails } from '../../src/slice-details';
@@ -28,7 +28,9 @@ describe('getMatras', () => {
 
       expect(
         getMatras(
-          getTokens(testString.string)
+          removeSpaces(
+            getTokens(testString.string)
+          )
         )
       ).to.deep.equal(testString.matras);
 

@@ -1,5 +1,5 @@
+import { cleanString, removeSpaces } from '../../src/utils';
 import { getGanas, makeGanasKey } from '../../src/ganas';
-import { cleanString } from '../../src/utils';
 import { expect } from 'chai';
 import { getMatras } from '../../src/matras';
 import { getSliceDetails } from '../../src/slice-details';
@@ -31,7 +31,9 @@ describe('getGanas', () => {
         makeGanasKey(
           getGanas(
             getMatras(
-              getTokens(testString.string)
+              removeSpaces(
+                getTokens(testString.string)
+              )
             )
           )
         )

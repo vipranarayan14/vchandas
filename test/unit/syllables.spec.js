@@ -1,4 +1,4 @@
-import { cleanString } from '../../src/utils';
+import { cleanString, removeSpaces } from '../../src/utils';
 import { expect } from 'chai';
 import { getSliceDetails } from '../../src/slice-details';
 import { getSyllables } from '../../src/syllables';
@@ -28,7 +28,9 @@ describe('getSyllables', () => {
 
       expect(
         getSyllables(
-          getTokens(testString.string)
+          removeSpaces(
+            getTokens(testString.string)
+          )
         )
       ).to.deep.equal(testString.syllables);
 

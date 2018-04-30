@@ -1,5 +1,5 @@
+import { cleanString, removeSpaces } from './utils';
 import { getGanas, makeGanasKey } from './ganas';
-import { cleanString } from './utils';
 import { getChandas } from './chandas';
 import { getMatras } from './matras';
 import { getSliceDetails } from './slice-details';
@@ -26,9 +26,11 @@ export const vChandas = () => {
       getSliceDetails(schemeTree)
     );
 
-    const syllables = getSyllables(tokens);
+    const cleanedTokens = removeSpaces(tokens);
 
-    const matras = getMatras(tokens, ignoreLastLaghu);
+    const syllables = getSyllables(cleanedTokens);
+
+    const matras = getMatras(cleanedTokens, ignoreLastLaghu);
 
     const ganas = getGanas(matras);
 
