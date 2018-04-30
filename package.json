@@ -37,7 +37,7 @@
   "dependencies": {
     "chalk": "^2.4.0",
     "vtokenize": "^2.1.1",
-    "vtranslit-itrn-scheme": "github:vipranarayan14/vtranslit-itrn-scheme"
+    "vtranslit-scheme-itrn": "^0.3.0"
   },
   "repository": "https://github.com/vipranarayan14/vchandas.git"
 }
