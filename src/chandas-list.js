@@ -88,7 +88,7 @@ export const chandasList = [
       'shashivadanAnAM vrajataruNInAm | ' +
       'dadhighaTabhedaM madhuripuraichchhat ||'
     ],
-    ganas: 'na|ya',
+    ganas: 'na,ya',
     name: 'shashivadanA',
     type: 'gAyatrI'
   },
@@ -99,7 +99,7 @@ export const chandasList = [
       'varShAkAlE kAlE mEghAchchhannAkAshE | ' +
       'vidyullEkhA bhAntyAH sarvairAlOkhyantE ||'
     ],
-    ganas: 'ma|ma',
+    ganas: 'ma,ma',
     name: 'vidyullEkhA',
     type: 'gAyatrI'
   },
@@ -110,7 +110,7 @@ export const chandasList = [
       'sAstE vasumatI yAstE vasumatI | ' +
       'puNyAkaravatI puNyAkarabhavA ||'
     ],
-    ganas: 'ta|sa',
+    ganas: 'ta,sa',
     name: 'vasumatI',
     type: 'gAyatrI'
   },
@@ -311,16 +311,6 @@ export const chandasList = [
     ganas: 'ta,ja,ja|ga',
     name: 'upasthitA',
     type: 'pa~Nkti'
-  },
-  {
-    caesura: '',
-    definition: 'guH',
-    examples: [
-      'shrIshaH | ' +
-      'pAyAt ||'
-    ],
-    name: 'shrIH',
-    type: 'uktA'
-  },
+  }
 
 ];
