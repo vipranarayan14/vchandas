@@ -37,9 +37,10 @@
 
       if (chandasDetails.chandas) {
 
-        log(chalk.yellow.bold('Chandas type:'), '\n', chandasDetails.chandas.type);
-        log(chalk.yellow.bold('Chandas name:'), '\n', chandasDetails.chandas.name);
-        log(chalk.yellow.bold('Chandas definition:'), '\n', chandasDetails.chandas.definition);
+        log(chalk.yellow.bold('Chandas Jati:'), '\n', chandasDetails.chandas.type);
+        log(chalk.yellow.bold('Chandas Name:'), '\n', chandasDetails.chandas.name);
+        log(chalk.yellow.bold('Chandas Definition:'), '\n', chandasDetails.chandas.definition);
+        log(chalk.yellow.bold('Caesura:'), '\n', chandasDetails.chandas.caesura);
 
         chandasDetails.chandas.examples.forEach((example, index) => {
 
