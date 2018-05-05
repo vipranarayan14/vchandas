@@ -584,28 +584,28 @@ var chandasList = exports.chandasList = [{
   caesura: '',
   definition: 'tyau stastanumadhyA',
   examples: ['mUrtirmurashatrOratyadbhutarUpA | ' + 'AstAM mama cittE nityaM tanumadhyA ||', 'nashyanti dadarsha vRRindAni kapIndraH | ' + 'hArINyabalAnAM hArINyabalAnAm ||'],
-  ganas: 'ma|ga',
+  ganas: 'ta,ya',
   name: 'tanumadhyA',
   type: 'gAyatrI'
 }, {
   caesura: '',
   definition: 'shashivadanA nyau',
   examples: ['shashivadanAnAM vrajataruNInAm | ' + 'dadhighaTabhedaM madhuripuraichchhat ||'],
-  ganas: 'na|ya',
+  ganas: 'na,ya',
   name: 'shashivadanA',
   type: 'gAyatrI'
 }, {
   caesura: '',
   definition: 'vidyullEkhA mO maH',
   examples: ['varShAkAlE kAlE mEghAchchhannAkAshE | ' + 'vidyullEkhA bhAntyAH sarvairAlOkhyantE ||'],
-  ganas: 'ma|ma',
+  ganas: 'ma,ma',
   name: 'vidyullEkhA',
   type: 'gAyatrI'
 }, {
   caesura: '',
   definition: 'tsau chedvasumatI',
   examples: ['sAstE vasumatI yAstE vasumatI | ' + 'puNyAkaravatI puNyAkarabhavA ||'],
-  ganas: 'ta|sa',
+  ganas: 'ta,sa',
   name: 'vasumatI',
   type: 'gAyatrI'
 }, {
@@ -734,12 +734,6 @@ var chandasList = exports.chandasList = [{
   ganas: 'ta,ja,ja|ga',
   name: 'upasthitA',
   type: 'pa~Nkti'
-}, {
-  caesura: '',
-  definition: 'guH',
-  examples: ['shrIshaH | ' + 'pAyAt ||'],
-  name: 'shrIH',
-  type: 'uktA'
 }];
 
 /***/ }),
