@@ -77,7 +77,7 @@ export const chandasList = [
       'nashyanti dadarsha vRRindAni kapIndraH | ' +
       'hArINyabalAnAM hArINyabalAnAm ||'
     ],
-    ganas: 'ma|ga',
+    ganas: 'ta,ya',
     name: 'tanumadhyA',
     type: 'gAyatrI'
   },
