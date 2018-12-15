@@ -76,9 +76,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.vChandas = undefined;
 
-var _ganas = __webpack_require__(1);
+var _utils = __webpack_require__(1);
 
-var _utils = __webpack_require__(2);
+var _ganas = __webpack_require__(2);
 
 var _chandas = __webpack_require__(3);
 
@@ -94,17 +94,13 @@ var _init = __webpack_require__(8);
 
 var _vtokenize = __webpack_require__(10);
 
-var _vtranslitItrnScheme = __webpack_require__(11);
-
-var _vtranslitItrnScheme2 = _interopRequireDefault(_vtranslitItrnScheme);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _vtranslitSchemeItrn = __webpack_require__(11);
 
 var vChandas = exports.vChandas = function vChandas() {
 
   var chandasList = (0, _init.prepareChandasList)();
 
-  var _makeSchemeTree = (0, _schemeTree.makeSchemeTree)(_vtranslitItrnScheme2.default),
+  var _makeSchemeTree = (0, _schemeTree.makeSchemeTree)(_vtranslitSchemeItrn.vTranslitSchemeItrn),
       schemeTree = _makeSchemeTree.schemeTree,
       maxTokenLength = _makeSchemeTree.maxTokenLength;
 
@@ -114,9 +110,11 @@ var vChandas = exports.vChandas = function vChandas() {
 
     var tokens = (0, _vtokenize.vTokenize)((0, _utils.cleanString)(str), maxTokenLength, (0, _sliceDetails.getSliceDetails)(schemeTree));
 
-    var syllables = (0, _syllables.getSyllables)(tokens);
+    var cleanedTokens = (0, _utils.removeSpaces)(tokens);
 
-    var matras = (0, _matras.getMatras)(tokens, ignoreLastLaghu);
+    var syllables = (0, _syllables.getSyllables)(cleanedTokens);
+
+    var matras = (0, _matras.getMatras)(cleanedTokens, ignoreLastLaghu);
 
     var ganas = (0, _ganas.getGanas)(matras);
 
@@ -136,6 +134,26 @@ var vChandas = exports.vChandas = function vChandas() {
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var cleanString = exports.cleanString = function cleanString(str) {
+  return str.slice(0).trim().replace(/\s\s*/g, ' ');
+};
+
+var removeSpaces = exports.removeSpaces = function removeSpaces(tokens) {
+  return tokens.filter(function (token) {
+    return token.type !== 'space';
+  });
+};
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -197,20 +215,6 @@ var getGanas = exports.getGanas = function getGanas(matras) {
 
 var makeGanasKey = exports.makeGanasKey = function makeGanasKey(ganas) {
   return ganas.ganas.length && ganas.looseMatras ? ganas.ganas + '|' + ganas.looseMatras : '' + ganas.ganas + ganas.looseMatras;
-};
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var cleanString = exports.cleanString = function cleanString(str) {
-  return str.slice(0).trim().replace(/\s/g, '');
 };
 
 /***/ }),
@@ -571,28 +575,28 @@ var chandasList = exports.chandasList = [{
   caesura: '',
   definition: 'tyau stastanumadhyA',
   examples: ['mUrtirmurashatrOratyadbhutarUpA | ' + 'AstAM mama cittE nityaM tanumadhyA ||', 'nashyanti dadarsha vRRindAni kapIndraH | ' + 'hArINyabalAnAM hArINyabalAnAm ||'],
-  ganas: 'ma|ga',
+  ganas: 'ta,ya',
   name: 'tanumadhyA',
   type: 'gAyatrI'
 }, {
   caesura: '',
   definition: 'shashivadanA nyau',
   examples: ['shashivadanAnAM vrajataruNInAm | ' + 'dadhighaTabhedaM madhuripuraichchhat ||'],
-  ganas: 'na|ya',
+  ganas: 'na,ya',
   name: 'shashivadanA',
   type: 'gAyatrI'
 }, {
   caesura: '',
   definition: 'vidyullEkhA mO maH',
   examples: ['varShAkAlE kAlE mEghAchchhannAkAshE | ' + 'vidyullEkhA bhAntyAH sarvairAlOkhyantE ||'],
-  ganas: 'ma|ma',
+  ganas: 'ma,ma',
   name: 'vidyullEkhA',
   type: 'gAyatrI'
 }, {
   caesura: '',
   definition: 'tsau chedvasumatI',
   examples: ['sAstE vasumatI yAstE vasumatI | ' + 'puNyAkaravatI puNyAkarabhavA ||'],
-  ganas: 'ta|sa',
+  ganas: 'ta,sa',
   name: 'vasumatI',
   type: 'gAyatrI'
 }, {
@@ -721,12 +725,6 @@ var chandasList = exports.chandasList = [{
   ganas: 'ta,ja,ja|ga',
   name: 'upasthitA',
   type: 'pa~Nkti'
-}, {
-  caesura: '',
-  definition: 'guH',
-  examples: ['shrIshaH | ' + 'pAyAt ||'],
-  name: 'shrIH',
-  type: 'uktA'
 }];
 
 /***/ }),
@@ -902,9 +900,9 @@ var vTokenize = exports.vTokenize = function vTokenize(str, maxTokenLength, getS
 	else if(typeof define === 'function' && define.amd)
 		define([], factory);
 	else if(typeof exports === 'object')
-		exports["vTranslitItrnScheme"] = factory();
+		exports["vTranslitSchemeItrn"] = factory();
 	else
-		root["vTranslitItrnScheme"] = factory();
+		root["vTranslitSchemeItrn"] = factory();
 })(typeof self !== 'undefined' ? self : this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -981,11 +979,12 @@ return /******/ (function(modules) { // webpackBootstrap
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var vTranslitItrnScheme = exports.vTranslitItrnScheme = {
+var vTranslitSchemeItrn = exports.vTranslitSchemeItrn = {
   'about': {
-    'schemeCode': 'Itrn',
-    'schemeName': 'ITRANS',
-    'type': 'roman'
+    'code': 'Itrn',
+    'name': 'ITRANS',
+    'type': 'roman',
+    'unicodeBlock': '0020-007F'
   },
   'data': {
     'ayogavaha': [['M', '.m'], ['H', '.h']],
@@ -998,7 +997,7 @@ var vTranslitItrnScheme = exports.vTranslitItrnScheme = {
 };
 
 /***/ })
-/******/ ])["vTranslitItrnScheme"];
+/******/ ]);
 });
 
 /***/ })
