@@ -74,7 +74,9 @@ window["vChandas"] =
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.vChandas = undefined;
+exports.Vchandas = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _utils = __webpack_require__(1);
 
@@ -90,47 +92,70 @@ var _syllables = __webpack_require__(6);
 
 var _schemeTree = __webpack_require__(7);
 
-var _init = __webpack_require__(8);
+var _prepareChandasList = __webpack_require__(8);
 
 var _vtokenize = __webpack_require__(10);
 
 var _vtranslitSchemeItrn = __webpack_require__(11);
 
-var vChandas = exports.vChandas = function vChandas() {
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-  var chandasList = (0, _init.prepareChandasList)();
+var $chandasList = void 0,
+    $schemeTree = void 0,
+    $maxTokenLength = void 0;
 
-  var _makeSchemeTree = (0, _schemeTree.makeSchemeTree)(_vtranslitSchemeItrn.vTranslitSchemeItrn),
-      schemeTree = _makeSchemeTree.schemeTree,
-      maxTokenLength = _makeSchemeTree.maxTokenLength;
+var Vchandas = exports.Vchandas = function () {
+  function Vchandas() {
+    _classCallCheck(this, Vchandas);
 
-  return function (str) {
-    var ignoreLastLaghu = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    $chandasList = (0, _prepareChandasList.prepareChandasList)();
 
+    var _makeSchemeTree = (0, _schemeTree.makeSchemeTree)(_vtranslitSchemeItrn.vTranslitSchemeItrn),
+        schemeTree = _makeSchemeTree.schemeTree,
+        maxTokenLength = _makeSchemeTree.maxTokenLength;
 
-    var tokens = (0, _vtokenize.vTokenize)((0, _utils.cleanString)(str), maxTokenLength, (0, _sliceDetails.getSliceDetails)(schemeTree));
+    $schemeTree = schemeTree;
+    $maxTokenLength = maxTokenLength;
 
-    var cleanedTokens = (0, _utils.removeSpaces)(tokens);
-
-    var syllables = (0, _syllables.getSyllables)(cleanedTokens);
-
-    var matras = (0, _matras.getMatras)(cleanedTokens, ignoreLastLaghu);
-
-    var ganas = (0, _ganas.getGanas)(matras);
-
-    var ganasKey = (0, _ganas.makeGanasKey)(ganas);
-
-    var chandas = (0, _chandas.getChandas)(ganasKey, chandasList);
-
-    return {
-      chandas: chandas,
-      ganas: ganas,
-      ganasKey: ganasKey,
-      matras: matras.join(','),
-      syllables: syllables.join(',')
+    this.options = {
+      ignoreLastLaghu: false
     };
-  };
-};
+  }
+
+  _createClass(Vchandas, [{
+    key: 'configure',
+    value: function configure(options) {
+      this.options = Object.assign({}, this.options, options);
+    }
+  }, {
+    key: 'find',
+    value: function find(str) {
+      var tokens = (0, _vtokenize.vTokenize)((0, _utils.cleanString)(str), $maxTokenLength, (0, _sliceDetails.getSliceDetails)($schemeTree));
+
+      var cleanedTokens = (0, _utils.removeSpaces)(tokens);
+
+      var syllables = (0, _syllables.getSyllables)(cleanedTokens);
+
+      var matras = (0, _matras.getMatras)(cleanedTokens, this.options.ignoreLastLaghu);
+
+      var ganas = (0, _ganas.getGanas)(matras);
+
+      var ganasKey = (0, _ganas.makeGanasKey)(ganas);
+
+      var chandas = (0, _chandas.getChandas)(ganasKey, $chandasList);
+
+      return {
+        chandas: chandas,
+        ganas: ganas,
+        ganasKey: ganasKey,
+        matras: matras.join(','),
+        syllables: syllables.join(',')
+      };
+    }
+  }]);
+
+  return Vchandas;
+}();
 
 /***/ }),
 /* 1 */
