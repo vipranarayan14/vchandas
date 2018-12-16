@@ -5,38 +5,48 @@ import { getMatras } from './matras';
 import { getSliceDetails } from './slice-details';
 import { getSyllables } from './syllables';
 import { makeSchemeTree } from './scheme-tree';
-import { prepareChandasList } from './init';
+import { prepareChandasList } from './prepare-chandas-list';
 import { vTokenize } from 'vtokenize';
 import { vTranslitSchemeItrn } from 'vtranslit-scheme-itrn';
 
-export const vChandas = () => {
+let $chandasList, $schemeTree, $maxTokenLength;
 
-  const chandasList = prepareChandasList();
+export class Vchandas {
+  constructor() {
+    $chandasList = prepareChandasList();
 
-  const {
-    schemeTree,
-    maxTokenLength
-  } = makeSchemeTree(vTranslitSchemeItrn);
+    const { schemeTree, maxTokenLength } = makeSchemeTree(vTranslitSchemeItrn);
 
-  return (str, ignoreLastLaghu = false) => {
+    $schemeTree = schemeTree;
+    $maxTokenLength = maxTokenLength;
 
+    this.options = {
+      ignoreLastLaghu: false
+    };
+  }
+
+  configure(options) {
+    this.options = Object.assign({}, this.options, options);
+  }
+
+  find(str) {
     const tokens = vTokenize(
       cleanString(str),
-      maxTokenLength,
-      getSliceDetails(schemeTree)
+      $maxTokenLength,
+      getSliceDetails($schemeTree)
     );
 
     const cleanedTokens = removeSpaces(tokens);
 
     const syllables = getSyllables(cleanedTokens);
 
-    const matras = getMatras(cleanedTokens, ignoreLastLaghu);
+    const matras = getMatras(cleanedTokens, this.options.ignoreLastLaghu);
 
     const ganas = getGanas(matras);
 
     const ganasKey = makeGanasKey(ganas);
 
-    const chandas = getChandas(ganasKey, chandasList);
+    const chandas = getChandas(ganasKey, $chandasList);
 
     return {
       chandas,
@@ -45,7 +55,5 @@ export const vChandas = () => {
       matras: matras.join(','),
       syllables: syllables.join(',')
     };
-
-  };
-
-};
+  }
+}
