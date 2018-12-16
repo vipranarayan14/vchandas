@@ -6,7 +6,8 @@ Currently supports only varnasamavrittas.
 
 This package is a library and is useful only for developers.
 
-However, users can avail vchandas' [cli](https://vipranarayan14.github.io/vchandas-cli/) or [web app](https://vipranarayan14.github.io/vchandas-web/).
+However, users can avail vchandas' [cli](https://vipranarayan14.github.io/vchandas-cli/)
+or [web app](https://vipranarayan14.github.io/vchandas-web/).
 
 ## Installation
 
@@ -17,15 +18,44 @@ npm install vchandas
 ## Usage
 
 ```js
-const { vChandas } = require('vchandas'); // In Nodejs
+const { Vchandas } = require('vchandas'); // In Nodejs
 //            OR
-const vChandas = window.vChandas; // In Browser
+const Vchandas = window.vChandas; // In Browser
 
-// Initialization
-const vc = vChandas();
+// Initialize
+const vchandas = new Vchandas();
+
+// Configure
+const options = {
+  ignoreLastLaghu: true //default: false
+};
+
+vchandas.configure(options);
 
 // Find chandas
-const chandasResult = vc('<string in ITRANS scheme>');
+const chandasResult = vchandas.find('hE raama'); //string in ITRANS scheme
 
 console.log(chandasResult);
+```
+
+Output:
+
+```js
+{
+  chandas: {
+    caesura: '',
+    definition: 'mO nArI',
+    examples: ['nArINAM kalyANI | mAM pAyAtsA vANI ||'],
+    ganas: 'ma',
+    name: 'nArI',
+    type: 'madhyA'
+  },
+  ganas: {
+    ganas: 'ma',
+    looseMatras: ''
+  },
+  ganasKey: 'ma',
+  matras: 'ga,ga,ga',
+  syllables: 'hE,raa,ma'
+};
 ```
